@@ -102,7 +102,18 @@ class ANC(cmd.Cmd):
                     if f"{class_name}.{id}" not in objects:
                         print("** no instance found **")
                     else:
-                        print(objects[f"{class_name}.{id}"])
+                        if n > 2:
+                            cls_2 = line[2]
+                            print(
+                                getattr(
+                                    objects[
+                                        f"{class_name}.{id}"
+                                    ],
+                                    cls_2
+                                )
+                            )
+                        else:
+                            print(objects[f"{class_name}.{id}"])
         else:
             print("** class name missing **")
 
@@ -188,10 +199,10 @@ class ANC(cmd.Cmd):
             second_cls_id = line[3]
 
             model_1 = models.storage.get(first_class_name, first_cls_id)
-            print(f"\n\n\n{model_1}\n\n\n")
             model_2 = models.storage.get(second_class_name, second_cls_id)
 
-            setattr(model_1, model_1.__tablename__, model_2)
+            getattr(model_1, model_2.__tablename__).append(model_2)
+            # eval(f"model_1.{model_2.__tablename__}.append(model_2)")
             models.storage.save()
 
     def do_update(self, s):
