@@ -7,10 +7,14 @@ import models
 from models.base_model import BaseModel
 from models.artist import Artist
 from models.artwork import Artwork
+from models.categories import Category
 import shlex
 import re
 
-classes = {"BaseModel": BaseModel, "Artist": Artist, "Artwork": Artwork}
+classes = {
+        "BaseModel": BaseModel, "Artist": Artist, "Artwork": Artwork,
+        "Category": Category
+    }
 
 
 class ANC(cmd.Cmd):
@@ -68,7 +72,9 @@ class ANC(cmd.Cmd):
         n = len(line)
         if n:
             class_name = line[0]
-            args = {item.split("=")[0]: item.split("=")[1] for item in line[1:]}
+            args = {
+                item.split("=")[0]: item.split("=")[1] for item in line[1:]
+            }
             if class_name not in list(classes.keys()):
                 print("** class doesn't exist **")
             else:
@@ -143,7 +149,7 @@ class ANC(cmd.Cmd):
             print(result)
 
     def do_allids(self, s):
-        """Print all string representation of all instances with their ids only."""
+        """Print all string representation of all instances with their ids."""
         line = shlex.split(s)
         n = len(line)
         objects = models.storage.all()
@@ -171,6 +177,22 @@ class ANC(cmd.Cmd):
                 result.append(str(model))
         if result:
             print(result)
+
+    def do_append(self, s):
+        line = shlex.split(s)
+        n = len(line)
+        if n:
+            first_class_name = line[0]
+            second_class_name = line[2]
+            first_cls_id = line[1]
+            second_cls_id = line[3]
+
+            model_1 = models.storage.get(first_class_name, first_cls_id)
+            print(f"\n\n\n{model_1}\n\n\n")
+            model_2 = models.storage.get(second_class_name, second_cls_id)
+
+            setattr(model_1, model_1.__tablename__, model_2)
+            models.storage.save()
 
     def do_update(self, s):
         """Update an instance based on the class name and id."""

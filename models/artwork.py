@@ -14,6 +14,8 @@ class Artwork(BaseModel, Base):
     title = Column(String(255), nullable=False)
     description = Column(String(5000))
 
+    def __repr__(self):
+        return f"{self.id} title='{self.title}'"
     def __init__(self, *args, **kwargs):
         """initializes artwork"""
         super().__init__(*args, **kwargs)

@@ -9,10 +9,11 @@ import conf
 from models.base_model import BaseModel, Base
 from models.artist import Artist
 from models.artwork import Artwork
+from models.categories import Category
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Artwork": Artwork, "Artist": Artist}
+classes = {"Artwork": Artwork, "Artist": Artist, "Category": Category}
 
 
 class DBStorage:
