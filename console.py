@@ -8,12 +8,14 @@ from models.base_model import BaseModel
 from models.artist import Artist
 from models.artwork import Artwork
 from models.categories import Category
+from models.message import Message
+from models.comment import Comment
 import shlex
 import re
 
 classes = {
         "BaseModel": BaseModel, "Artist": Artist, "Artwork": Artwork,
-        "Category": Category
+        "Category": Category, "Message": Message, "Comment": Comment
     }
 
 
