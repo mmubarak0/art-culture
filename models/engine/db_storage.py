@@ -10,10 +10,16 @@ from models.base_model import BaseModel, Base
 from models.artist import Artist
 from models.artwork import Artwork
 from models.categories import Category
+from models.message import Message
+from models.comment import Comment
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Artwork": Artwork, "Artist": Artist, "Category": Category}
+classes = {
+        "Artwork": Artwork, "Artist": Artist,
+        "Category": Category, "Message": Message,
+        "Comment": Comment
+    }
 
 
 class DBStorage:
@@ -74,8 +80,8 @@ class DBStorage:
     def get(self, cls, id):
         """ get the 'cls' object from the storage"""
 
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
+        for clss in classes.keys():
+            if cls == clss or cls is classes[clss]:
                 objs = self.__session.query(classes[clss]).all()
                 for obj in objs:
                     if id == obj.id:
