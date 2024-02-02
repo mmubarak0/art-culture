@@ -15,3 +15,4 @@ from api.v1.views.artworks import *
 #from api.v1.views.comments import *
 ## {messages}
 #from api.v1.views.messages import *
+from api.v1.views.home import *
