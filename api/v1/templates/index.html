@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetch example</title>
+  </head>
+  <body>
+  <div class="Body"></div>
+  <script>
+    const url = "http://172.21.137.143:5005"
+    const api = "/api/v1/stats"
+    let Body = document.querySelector(".Body")
+    async function getStatus() {
+      try {
+        let res = await fetch(url+api);
+        return await res.json()
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    async function renderStatus() {
+      let s = await getStatus()
+      let html = ''
+      for (const key in s) {
+        let htmlSegment = `<h1>${key}</h1><p>${s[key]}</p>` 
+        html += htmlSegment;
+      }
+      Body.innerHTML = html
+    }
+    renderStatus();
+  </script>
+  </body>
+</html>

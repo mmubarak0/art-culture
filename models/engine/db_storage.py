@@ -88,6 +88,17 @@ class DBStorage:
                         return obj
         return None
 
+    def find(self, cls, **kwargs):
+        """Find object from the storage"""
+
+        for clss in classes.keys():
+            if cls == clss or cls is classes[clss]:
+                obj = self.__session.query(classes[clss]).filter_by(**kwargs).first()
+                if obj:
+                    return obj
+                break
+        return None
+
     def count(self, cls=None):
         """ counts the number of object in the storage"""
         return len(self.all(cls))
