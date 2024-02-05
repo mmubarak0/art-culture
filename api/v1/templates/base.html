@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="static/bootstrap-css/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/bootstrap-icons-1.10.5/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar sticky-top navbar-expand-md bg-info bg-gradient mt-2 py-1 shadow rounded-1">
+            <div class="container-fluid">
+                <a class="navbar-brand px-3 title" href="/">
+                    <span class="in-between-letters">Art</span>Culture
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-pills" id="navbarNav">
+                    <ul class="navbar-nav gap-4">
+                        <li class="nav-link">
+                            <a class="nav-link active rounded-5 px-4"
+                                href="/">Home</a>
+                        </li>
+                        <li class="nav-link">
+                            <a class="nav-link"
+                                href="/categories">Categories</a>
+                        </li>
+                        {% if authenticated %}
+                        <li class="nav-link">
+                            <a class="nav-link"
+                                href="/user_articles">My Articles</a>
+                        </li>
+                        <li class="nav-link">
+                            <a class="nav-link"
+                                href="/user_messages">Messages</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="navbar-nav flex-row flex-wrap ms-sm-auto">
+                        <li class="nav-item px-2">
+                            <button class="btn btn-link nav-link" id="btnSwitch" title="Dark mode">
+                                <i class="bi bi-moon-stars-fill"></i>
+                            </button>
+                        </li>
+                        {% if authenticated %}
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" id="profile"
+                                type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                                <i class="bi bi-person-circle" title="Light mode"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form action="/artist" method="get">
+                                        <button type="submit" class="dropdown-item d-flex">
+                                            <i class="bi bi-person-heart opacity-50 px-2"></i>
+                                            view profile
+                                        </button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="/api/v1/logout" method="get">
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="bi bi-arrow-right-circle-fill opacity-50 px-2"></i>
+                                            log out
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" id="profile"
+                                type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                                <i class="bi bi-person-circle" title="Light mode"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form action="/api/v1/login" method="get">
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="bi bi-arrow-right-circle-fill opacity-50 px-2"></i>
+                                            login
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block index %}{% endblock index %}
+    </div>
+    <script src="static/bootstrap-js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/toggle.js"></script>
+</body>
+
+</html>

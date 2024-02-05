@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetch example</title>
+  </head>
+  <body>
+  <div class="Body"></div>
+  <script>
+    const url = "http://172.21.137.143:5005"
+    const login = "/api/v1/api_login"
+    const logout = "/api/v1/logout"
+    const api = "/api/v1/artists"
+    let Body = document.querySelector(".Body")
+    async function logIn() {
+      try {
+        let res = await fetch(
+          url+login, {
+            method: "POST",
+            body: JSON.stringify({"email": "1@x.com", "password":"123"}),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
+        )
+      } catch(error) {
+          console.log(error);
+      }
+    }
+    async function logOut() {
+      try {
+        let res = await fetch(
+          url+logout
+        )
+      } catch(error) {
+          console.log(error);
+      }
+    }
+    async function getStatus() {
+      //await logIn();
+      //await logOut();
+      try {
+        let res = await fetch(url+api);
+        return await res.json()
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    async function renderStatus() {
+      let s = await getStatus()
+      if ('error' in s){
+        console.log(s['error'])
+        Body.innerHTML = `<h1>
+          Sorry The content is not available for you. You need to sign up first
+        </h1>
+        <a href="/api/v1/login">Login</a>
+        <hr/>
+        <a href="/api/v1/register">Sign up</a>`
+      } else {
+        let html = ''
+        console.log(s)
+        for (const key in s) {
+          let htmlSegment = `<h1>${s[key].email}</h1><p>${s[key].first_name + " " + s[key].last_name}</p>` 
+          html += htmlSegment;
+        }
+        Body.innerHTML = html
+      }
+    }
+    renderStatus();
+  </script>
+  </body>
+</html>

@@ -3,13 +3,14 @@
 
 import models
 import conf
-from flask import Flask, jsonify, session
-from api.v1.views import app_views
-from functools import wraps
+from flask import Flask
+from api.v1.views import api_views
+from api.v1.home.views import home_views
 
 
 app = Flask(__name__)
-app.register_blueprint(app_views)
+app.register_blueprint(api_views)
+app.register_blueprint(home_views)
 app.secret_key = "artnculture"
 
 
@@ -17,15 +18,6 @@ app.secret_key = "artnculture"
 def tear_down(exception=None):
     """close session"""
     models.storage.close()
-
-
-def login_required(func):
-    @wraps(func)
-    def loginwrapper(*args, **kwargs):
-        if 'email' not in session:
-            return jsonify({"error": "Unauthorized access"}), 401
-        return func(*args, **kwargs)
-    return loginwrapper
 
 
 if __name__ == '__main__':

@@ -1,0 +1,143 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+label {
+    display: block;
+    padding-bottom: 10px;
+    color: grey;
+    position: relative;
+}
+
+caption {
+    position: relative;
+    background-color: rgba(128, 128, 128, 0.582);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: whitesmoke;
+    padding: 20px 0px;
+    animation: fadeInUpBig;
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 3s;
+    /* don't forget to set a duration! */
+}
+
+table {
+    animation: fadeInRight;
+    animation-duration: 3s;
+}
+
+table thead {
+    text-transform: capitalize;
+}
+
+.col.xbounceDown-1 {
+    animation: bounceInDown;
+    animation-duration: 1s;
+}
+
+.col.xbounceDown-2 {
+    animation: bounceInDown;
+    animation-duration: 2s;
+}
+
+.col.xbounceDown-3 {
+    animation: bounceInDown;
+    animation-duration: 3s;
+}
+
+c1 {
+    background: repeating-linear-gradient(45deg, aliceblue, rgb(77, 155, 219), aliceblue);
+}
+
+c2 {
+    background: repeating-linear-gradient(45deg, aliceblue, rgb(77, 155, 219));
+}
+
+.float {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: 7px;
+    right: 20px;
+    /* background: linear-gradient(rgb(77, 155, 219), rgb(12, 142, 248)); */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 4px 4px 3px #2e336d65;
+    transition: all 500ms 500ms;
+}
+
+.float:hover {
+    box-shadow: 4px 4px 10px #2e336d65;
+    border: 1px solid aliceblue;
+    font-size: 1.5em;
+}
+
+#drugrow {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.title {
+    color: lightcyan;
+}
+
+.first-letter {
+    font-size: 50px;
+    text-shadow: 1px 1px 4px --primary;
+    color: #052c65;
+}
+
+.head-right {
+    text-indent: 20px;
+}
+
+.in-between-letters {
+    color: #052c65;
+}
+
+.login-form [type='text'],
+.login-form [type='password'] {
+    padding: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    border: 3px solid #f0f0f0;
+    border-radius: 5px;
+}
+
+[for="id_password"]::after {
+    content: "Forgot Password?";
+    text-decoration: underline;
+    color: var(--bs-blue);
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    top: 0;
+}
+
+.login-form [type='submit'] {
+    float: right;
+}
+
+.login-card {
+    border-color: #f0f0f0;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.login-card-header {
+    font-weight: bold;
+}
+
+.fgpass {
+    background-color: #f0f0f0;
+}
+
+.forget-link {
+    color: #212121;
+}

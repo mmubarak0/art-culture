@@ -5,10 +5,9 @@ import sqlalchemy
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Table, ForeignKey
 from sqlalchemy.orm import relationship
-from flask_login import UserMixin
 
 
-class Artist(BaseModel, Base, UserMixin):
+class Artist(BaseModel, Base):
     """Artist columns"""
     __tablename__ = 'artists'
     # email instead of (username) as better unique identfier.

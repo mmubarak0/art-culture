@@ -2,8 +2,7 @@
 """Artwork view."""
 
 import models
-from api.v1.views import app_views
-from api.v1.app import login_required
+from api.v1.views import api_views, login_required
 from flask import jsonify, request, redirect, session
 from models.engine.db_storage import classes
 from models import storage
@@ -11,7 +10,28 @@ from models.artist import Artist
 from models.artwork import Artwork
 
 
-@app_views.route('/login', methods=['GET', 'POST'], strict_slashes=False)
+@api_views.route('/api_login', methods=['GET', 'POST'], strict_slashes=False)
+def api_login_view():
+    """Login view"""
+    if request.method == 'POST':
+        data = request.get_json()
+        if 'email' not in data:
+            return jsonify({"error": "missing email"})
+        if 'password' not in data:
+            return jsonify({"error": "missing password"})
+        artist = models.storage.find(Artist, **data)
+        if artist:
+            session["email"] = data["email"]
+            print('Logged in successfully.')
+            return jsonify({"login_status": f"active user {artist.first_name}"})
+        return jsonify({"error": "user is not registered in the database"})
+    if 'email' in session:
+        email = session['email']
+        return jsonify({"login_status": f"active user {models.storage.find('Artist', email=email).first_name}"})
+    return jsonify({"login_status": f"not active"})
+
+
+@api_views.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login_view():
     """Login view"""
     if request.method == 'POST':
@@ -29,7 +49,7 @@ def login_view():
         if artist:
             session["email"] = data["email"]
             print('Logged in successfully.')
-            return jsonify({"login_status": f"active user {artist.first_name}"})
+            return redirect("/")
         return jsonify({"error": "user is not registered in the database"})
     if 'email' in session:
         email = session['email']
@@ -45,7 +65,7 @@ def login_view():
     '''
 
 
-@app_views.route('/register', methods=['GET', 'POST'], strict_slashes=False)
+@api_views.route('/register', methods=['GET', 'POST'], strict_slashes=False)
 def register_view():
     """Login view"""
     if request.method == 'POST':
@@ -59,7 +79,7 @@ def register_view():
         new_model = eval("Artist")(**data)
         models.storage.new(new_model)
         models.storage.save()
-        return jsonify({"success": "New user has been created successfully"})
+        return redirect("/")
     if 'email' in session:
         email = session['email']
         active_user = models.storage.find("Artist", email=email).first_name
@@ -79,14 +99,14 @@ def register_view():
     '''
 
 
-@app_views.route('/logout', methods=['GET'], strict_slashes=False)
+@api_views.route('/logout', methods=['GET'], strict_slashes=False)
 @login_required
 def logout():
     session.pop('email', None)
-    return redirect('/api/v1/status')
+    return redirect('/')
 
 
-@app_views.route('/artists', methods=['GET'], strict_slashes=False)
+@api_views.route('/artists', methods=['GET'], strict_slashes=False)
 @login_required
 def get_artists():
     """Retrieves a list of all Artists objects"""
@@ -94,7 +114,8 @@ def get_artists():
     return jsonify([artist.to_dict() for artist in artists])
 
 
-@app_views.route('/artists/<artist_id>/artworks', methods=['GET'])
+@api_views.route('/artists/<artist_id>/artworks', methods=['GET'])
+@login_required
 def list_artworks_from_artist(artist_id):
     """Cities from artist route."""
     artist = models.storage.get(Artist, artist_id)
@@ -106,7 +127,8 @@ def list_artworks_from_artist(artist_id):
     return jsonify({"error": "Not found"}), 404
 
 
-@app_views.route('/artists/<artist_id>', methods=['GET'])
+@api_views.route('/artists/<artist_id>', methods=['GET'])
+@login_required
 def get_artist_by_id(artist_id):
     """Artist by id route."""
     artist = models.storage.get(Artist, artist_id)
@@ -115,7 +137,8 @@ def get_artist_by_id(artist_id):
     return jsonify({"error": "Not found"}), 404
 
 
-@app_views.route('/artists/<artist_id>', methods=['DELETE'])
+@api_views.route('/artists/<artist_id>', methods=['DELETE'])
+@login_required
 def delete_artist_by_id(artist_id):
     """Delete Artist by id route."""
     artist = models.storage.get(Artist, artist_id)
@@ -126,7 +149,8 @@ def delete_artist_by_id(artist_id):
     return jsonify({"error": "Not found"}), 404
 
 
-@app_views.route('/artist', methods=['POST'], strict_slashes=False)
+@api_views.route('/artist', methods=['POST'], strict_slashes=False)
+@login_required
 def create_artist():
     """Creates a new Artist object"""
     data = request.get_json()
@@ -143,7 +167,8 @@ def create_artist():
     return jsonify(new_artist.to_dict()), 201
 
 
-@app_views.route('/artists/<artist_id>', methods=['PUT'])
+@api_views.route('/artists/<artist_id>', methods=['PUT'])
+@login_required
 def alter_artist_by_id(artist_id):
     """Alter Artist by id route."""
     artist = models.storage.get(Artist, artist_id)

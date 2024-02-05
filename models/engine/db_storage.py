@@ -12,13 +12,14 @@ from models.artwork import Artwork
 from models.categories import Category
 from models.message import Message
 from models.comment import Comment
+from models.media import Media
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {
         "Artwork": Artwork, "Artist": Artist,
         "Category": Category, "Message": Message,
-        "Comment": Comment
+        "Comment": Comment, "Media": Media
     }
 
 
