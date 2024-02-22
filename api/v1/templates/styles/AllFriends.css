@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    align-items: flex-start;
+}
+
+#users{
+    background: white;
+    padding: 8px;
+    max-height: 85vh;
+    overflow: auto;
+}
+
+#loaderdiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#userdetailasdev{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid #dfdfdf;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.userimg{
+    margin-right: 10px;
+}
+
+.userimg img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+#data{
+    width: 80%;
+    margin-left: 10px;
+}
+
+.username{
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.signupdate{
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+#dropdown{
+    width: 10%;
+    height: 100%;
+}
+
+.dropdownbuttons{
+    cursor: pointer;
+    padding: 10px;
+    color: #3360f9;
+}
+
+#dropdownhide{
+    display: none;
+}
+
+#userprofilediv{
+    position: absolute;
+    background: white;
+    border: 2px solid #dfdfdf;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 5px;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+#usercoverimg{
+    margin-bottom: 8%;
+    max-height: 260px;
+}
+
+#userprofileimg{
+    border-radius: 50%;
+    position: absolute;
+    bottom: 25px;
+    left: 15px;
+    width: 150px;
+    height: 150px;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/register.css">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="div-1">
+          <div class="div-2">
+            <h2>Sign Up</h2>
+          </div>
+          <div class="div-3">
+            <div class="div-h3">
+              <h5>Frist Name :</h5>
+            </div>
+            <input
+              type="type"
+              class="input"
+              placeholder="Frist Name"
+              id="fristname"
+              name="FirstName"
+            />
+          </div>
+          <div class="div-3">
+            <div class="div-h3">
+              <h5>Last Name :</h5>
+            </div>
+            <input
+              type="type"
+              class="input"
+              placeholder="Last Name"
+              id="lastname"
+              name="LastName"
+            />
+          </div>
+          <div class="div-3">
+            <div class="div-h3">
+              <h5>Mobile Number :</h5>
+            </div>
+            <input
+              type="number"
+              class="input"
+              placeholder="Mobile Number"
+              id="mobilenumber"
+              name="MobileNumber"
+            />
+          </div>
+          <div class="div-3">
+            <div class="div-h3">
+              <h5>Email Address :</h5>
+            </div>
+            <input
+              type="email"
+              class="input"
+              placeholder="Email Address"
+              name="email"
+              id="email"
+            />
+          </div>
+          <div class="div-3">
+            <div class="div-h3">
+              <h5>Password :</h5>
+            </div>
+            <input
+              type="password"
+              class="input"
+              placeholder="Password"
+              name="password"
+              id="password"
+            />
+          </div>
+          <div class="div-3">
+            <div class="div-h3">
+              <h5>Re-Enter Password :</h5>
+            </div>
+            <input
+              type="password"
+              class="input"
+              placeholder="Re-Enter Password"
+              id="Repassword"
+              name="ReEnterPassword"
+            />
+          </div>
+          <p id="message"></p>
+          <div class="div-4">
+            <button id="signup" onClick="SignUp()">Sign Up</button>
+          </div>
+          <div class="div-6">
+            <p>
+              Don't have an account?
+              <span id="login" onClick="login()">Log In</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <script src="../js/register.js"></script>
+      <script src="../js/firebase.js"></script>
+</body>
+</html>

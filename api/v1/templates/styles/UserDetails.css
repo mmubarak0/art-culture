@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+  }
+  #usercoverpicturediv {
+    position: relative;
+  }
+  #choosecoverimg {
+    position: absolute;
+    right: 4px;
+    bottom: 35px;
+  }
+  #m {
+    border-radius: 100px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+      rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  }
+  #usercoverimg {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    max-height: 40vh;
+  }
+  input {
+    outline: none;
+  }
+  .userprofile {
+    margin: 0px;
+  }
+  .profileimage {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+  }
+  .inputfirst {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #a {
+    background-color: #f0f2f5;
+    width: 105%;
+    font-size: 15px;
+    height: 80%;
+    outline: none !important;
+    border: none;
+    margin: 0px;
+    padding: 15px;
+    padding-left: 20px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+  .navpro {
+    background-color: #ffffff;
+    margin: 0px;
+    border-radius: 5px;
+    height: 50px;
+    padding: 5px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .profilepicture {
+    height: 35px;
+    width: 35px;
+    margin: 0px !important;
+  }
+  #userimg {
+    border-radius: 100px;
+  }
+  #userprofilepicturediv {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+  }
+  #userprofileimg {
+    border-radius: 100px;
+    height: 150px;
+    width: 150px;
+  }
+  #createpostdiv {
+    padding: 0px;
+  }
+  #chooseprofileimg {
+    position: absolute;
+    bottom: 10px;
+    left: 90px;
+  }
+  #progressbardiv {
+    border-radius: 10px;
+    visibility: hidden;
+    margin-top: 3px;
+    margin-bottom: 4px;
+  }
+  #editabledatadiv {
+    margin: 0px;
+  }
+  
+  #userprofileandpostsdiv {
+    padding: 0px 20px;
+  }
+  .usersdetailsbuttons {
+    color: blue;
+    width: 50%;
+    padding: 5px 23px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+  }
+  #navpromain {
+    width: 100%;
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+  }
+  #editabledatadiv {
+    background-color: white !important;
+  }
+  .buttons {
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+  }
+  #editabledatadiv {
+    padding: 5px;
+    overflow: auto;
+    height: 100px;
+  }
+  #userprofilebutton {
+    background-color: blue;
+    color: white;
+  }
+  .labels {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .userdatainputs {
+    margin: 10px 0px;
+    border: 1px solid #d4d9de;
+    width: 100%;
+    outline: none;
+    height: 33px;
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 16px;
+  }
+  #userdescription {
+    resize: none;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #d4d9de;
+    outline: none;
+    border-radius: 5px;
+  }
+  #updatedatabutton {
+    background-color: blue;
+    width: 40%;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    padding: 7px;
+  }
+  .usernameanddetailsdiv {
+    width: 65%;
+  }
+  .editanddeletbtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  #showposts {
+    height: auto;
+    max-height: 18vh;
+    width: 100% !important;
+    overflow: auto;
+  }
+  #maincreate {
+    height: 18vh;
+    overflow: auto;
+    display: none;
+  }
+  .commentmain > div {
+    width: 75% !important;
+  }
+  #editabledatadiv::-webkit-scrollbar-track,
+  #maincreate::-webkit-scrollbar-track,
+  #showposts::-webkit-scrollbar-track {
+    border: 1px solid #cbcbcb;
+    background-color: #fffdfd;
+    border-radius: 10px;
+    box-shadow: rgb(203, 219, 232) 3px 3px 6px 0px inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+  .updatebnt {
+    color: green;
+    min-height: 15px;
+    font-size: 15px;
+  }
+  #done {
+    color: green;
+    min-height: 15px;
+    font-size: 15px;
+    display: none;
+  }
+  .commentinput {
+    width: 85% !important;
+  }
+  .postmain {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  #editabledatadiv::-webkit-scrollbar,
+  #maincreate::-webkit-scrollbar,
+  #showposts::-webkit-scrollbar {
+    width: 8px;
+    background-color: #ffffff;
+  }
+  
+  #editabledatadiv::-webkit-scrollbar-thumb,
+  #maincreate::-webkit-scrollbar-thumb,
+  #showposts::-webkit-scrollbar-thumb {
+    background-color: #3360f8;
+    border-radius: 10px;
+  }
+  #userprofileandpostsdiv {
+    height: 10px;
+    background-color: white;
+  }
+  #currentuserpostsdiv {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  #loud {
+    height: 100px;
+  }
+  .postheader {
+    padding: 0px !important;
+  }
+  .postsbtn {
+    color: blue;
+    cursor: pointer;
+    background-color: #fffefe;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  #inputforuserprofileimg {
+    display: none;
+  }
+  #currentuserpostsdiv {
+    display: none;
+  }
+  #inputforusercoverimg {
+    display: none;
+  }
+  .progress {
+    margin-bottom: 10px;
+  }
+  @media only screen and (max-width: 581px) {
+    .userdatainputs {
+      font-size: 4vw;
+    }
+  }
+  
+  @media only screen and (max-width: 483px) {
+    .uploadbuttons > img {
+      height: 13px;
+      width: 13px;
+    }
+    .uploadbuttons {
+      padding: 3px 8px;
+    }
+    .currentusercreatepost > input {
+      font-size: 13px;
+    }
+  }
+  

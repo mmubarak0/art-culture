@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/emailverify.css">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="div-1">
+          <div class="div-2">
+            <img src="../icons/email.png" width="70px" />
+            <h3>Please verify your email</h3>
+            <p id="ppp">
+              You're almost there! We sent an email to
+              <span id="emailid"></span>
+            </p>
+            <br />
+            <p>
+              Just click on the link in that email to complete your signup. If you
+              don't see it, you may need to
+              <span id="bold">check your inbox </span>folder.
+            </p>
+          </div>
+          <p id="message"></p>
+          <div class="buttondiv">
+            <button class="button" onClick="resend()">Resend Email</button>
+            <button class="button" onClick="reloud()">Confirm</button>
+          </div>
+        </div>
+      </div>
+      <script src="../js/firebase.js"></script>
+      <script src="../js/email.js"></script>
+</body>
+</html>
