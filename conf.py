@@ -1,0 +1,6 @@
+ANC_MYSQL_USER = "anc_dev"
+ANC_MYSQL_PWD = "artnculture"
+ANC_MYSQL_HOST = "localhost"
+ANC_MYSQL_DB = "anc_dev_db"
+ANC_ENV = ""
+# ANC_ENV = "test"
