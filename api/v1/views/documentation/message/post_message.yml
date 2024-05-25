@@ -1,0 +1,31 @@
+Create a message object
+---
+tags:
+  - Message
+parameters:
+  - name: artist_id
+    in: path
+    description: ID of the artist sending the message
+    required: true
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+  - name: body
+    in: body
+    required: true
+    schema:
+      properties:
+        reciever_id:
+          type: string
+          format: uuid
+          example: 123e4567-e89b-12d3-a456-426614174000
+        content:
+          description: Message object
+          type: string
+responses:
+  201:
+    description: Message created successfully
+  400:
+    description: Invalid input
+  500:
+    description: Internal server error

@@ -1,0 +1,19 @@
+Retrive details of an artist
+---
+tags:
+    - Artist
+parameters:
+    - name: artist_id
+      in: path
+      description: ID of artist to return details for
+      required: true
+      type: string
+      format: uuid
+      example: 123e4567-e89b-12d3-a456-426614174000
+responses:
+    200:
+        description: OK
+    404:
+        description: Not Found
+    500:
+        description: Internal Server Error

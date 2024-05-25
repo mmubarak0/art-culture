@@ -1,0 +1,19 @@
+retrive artwork by id
+---
+tags:
+  - artwork
+parameters:
+  - name: artwork_id
+    in: path
+    description: ID of artwork to return
+    required: true
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+responses:
+  200:
+    description: OK
+  404:
+    description: Not Found
+  500:
+    description: Internal Server Error

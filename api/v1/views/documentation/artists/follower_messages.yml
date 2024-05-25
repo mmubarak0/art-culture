@@ -1,0 +1,24 @@
+Get messages of an artist
+---
+tags:
+    - Artist
+parameter:
+    - name: artist_id
+      in: path
+      description: ID of the followed artist
+      required: true
+      type: string
+    - name: body
+      in: body
+      required: true
+      schema:
+        properties:
+            artist_id:
+                type: string
+                format: uuid
+                example: 123e4567-e89b-12d3-a456-426614174000
+responses:
+    '200':
+        description: OK
+    '404':
+        description: Artist not found

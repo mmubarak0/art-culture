@@ -1,0 +1,19 @@
+Get list of all message sent by the artist
+---
+tags:
+  - Message
+parameters:
+  - name: artist_id
+    in: path
+    description: ID of the artist
+    required: true
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+responses:
+  200:
+    description: List of messages
+  404:
+    description: Artist not found
+  500:
+    description: Internal server error

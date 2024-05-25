@@ -1,0 +1,17 @@
+Delete categories
+---
+tags:
+    - category
+parameters:
+    - name: category_id
+      in: path
+      required: true
+      description: The id of the category to delete
+      type: string
+responses:
+    "200":
+        description: Category deleted successfully
+    "404":
+        description: Category not found
+    "500":
+        description: Internal server error

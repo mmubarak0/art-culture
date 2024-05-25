@@ -1,0 +1,29 @@
+Updates the category info based on ID
+---
+tags:
+    - category
+parameters:
+    - name: category_id
+      in: path
+      description: ID of category to update
+      required: true
+      type: string
+    - name: name
+      in: body
+      description: Name of category
+      required: true
+      type: string
+      requires:
+          - name
+      properties:
+          name:
+              type: string
+responses:
+    200:
+        description: Category updated
+    404:
+        description: Category not found
+    500:
+        description: Internal Server Error
+    400:
+        description: Not a JSON object

@@ -1,0 +1,30 @@
+Like an artwork action
+---
+tags:
+  - artwork
+parameters:
+  - name: artwork_id
+    in: path
+    description: ID of the artwork to like
+    required: true
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+  - name: body
+    in: body
+    required: true
+    schema:
+      properties:
+        artist_id:
+          type: string
+          format: uuid
+          example: 123e4567-e89b-12d3-a456-426614174000
+responses:
+  200:
+    description: Artwork liked successfully
+  400:
+    description: Bad request
+  404:
+    description: Artwork not found
+  500:
+    description: Internal server error
