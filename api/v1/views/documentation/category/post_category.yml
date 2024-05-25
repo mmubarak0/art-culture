@@ -1,0 +1,19 @@
+Create a new category
+---
+tags:
+  - category
+parameters:
+  - name: body
+    in: body
+    required: true
+    requires:
+      - name
+    properties:
+      name:
+        type: string
+
+responses:
+  400:
+    description: missing name or invalid JSON
+  201:
+    description: Successful request

@@ -1,0 +1,30 @@
+Create an artwork
+---
+tags:
+  - artwork
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      properties:
+        artist_id:
+          type: string
+          format: uuid
+          example: 123e4567-e89b-12d3-a456-426614174000
+        title:
+          required: true
+          type: string
+          example: "Mona Lisa"
+        description:
+          type: string
+        order:
+          type: integer
+          example: 1
+responses:
+  201:
+    description: Created successfully
+  400:
+    description: Bad Request
+  500:
+    description: Internal Server Error

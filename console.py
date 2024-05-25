@@ -7,7 +7,7 @@ import models
 from models.base_model import BaseModel
 from models.artist import Artist
 from models.artwork import Artwork
-from models.categories import Category
+from models.category import Category
 from models.message import Message
 from models.comment import Comment
 from models.media import Media

@@ -1,0 +1,15 @@
+Retrieves a category
+---
+tags:
+    - category
+parameters:
+    - name: category_id
+      in: path
+      description: ID of category to return
+      required: true
+      type: string
+responses:
+    200:
+        description: Category retrieved
+    404:
+        description: Category not found

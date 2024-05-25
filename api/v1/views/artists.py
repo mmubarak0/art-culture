@@ -3,110 +3,174 @@
 
 import models
 from api.v1.views import api_views
-from flask import jsonify, request, redirect, session
-from models.engine.db_storage import classes
+from flask import jsonify, request, abort, make_response
 from models import storage
 from models.artist import Artist
-from models.artwork import Artwork
+from flasgger.utils import swag_from
 
 
-@api_views.route('/api_login', methods=['GET', 'POST'], strict_slashes=False)
-def api_login_view():
-    """Login view"""
-    if request.method == 'POST':
-        data = request.get_json()
-        if 'email' not in data:
-            return jsonify({"error": "missing email"})
-        if 'password' not in data:
-            return jsonify({"error": "missing password"})
-        artist = models.storage.find(Artist, **data)
-        if artist:
-            session["email"] = data["email"]
-            print('Logged in successfully.')
-            return jsonify({"login_status": True})
-        return jsonify({"login_status": False})
-    if 'email' in session:
-        email = session['email']
-        return jsonify({"login_status": True})
-    return jsonify({"login_status": False})
-
-@api_views.route('/artists', methods=['GET'], strict_slashes=False)
+@api_views.route("/artists", methods=["GET"], strict_slashes=False)
+@swag_from("documentation/artists/get_artists.yml", methods=["GET"])
 def get_artists():
     """Retrieves a list of all Artists objects"""
     artists = storage.all(Artist).values()
-    return jsonify([artist.to_dict() for artist in artists])
+    result = []
+    for artist in artists:
+        artist = artist.to_dict()
+        result.append(artist)
+    return jsonify(result)
 
 
-@api_views.route('/artists/<artist_id>/artworks', methods=['GET'])
+@api_views.route("/artists/<artist_id>/artworks", methods=["GET"])
+@swag_from("documentation/artists/get_artworks_from_artist.yml", methods=["GET"])
 def list_artworks_from_artist(artist_id):
-    """Cities from artist route."""
-    artist = models.storage.get(Artist, artist_id)
+    """Artworks from artist route."""
+    artist = storage.get(Artist, artist_id)
     if artist:
-        artworks = [artwork.to_dict() for artwork in artist.artworks]
-        if artworks:
-            return jsonify(artworks)
-        return jsonify([])
-    return jsonify({"error": "Not found"}), 404
+        artworks = artist.artworks
+        result = []
+        for artwork in artworks:
+            artwork = artwork.to_dict()
+            result.append(artwork)
+        return jsonify(result)
+    return abort(404, description="Artist not found")
 
 
-@api_views.route('/artists/<artist_id>', methods=['GET'])
+@api_views.route("/artists/<artist_id>", methods=["GET"])
+@swag_from("documentation/artists/get_artist.yml", methods=["GET"])
 def get_artist_by_id(artist_id):
     """Artist by id route."""
-    artist = models.storage.get(Artist, artist_id)
+    artist = storage.get(Artist, artist_id)
     if artist:
         return jsonify(artist.to_dict())
-    return jsonify({"error": "Not found"}), 404
+    return abort(404, description="Artist not found")
 
 
-@api_views.route('/artists/<artist_id>', methods=['DELETE'])
+@api_views.route("/artists/<artist_id>", methods=["DELETE"])
+@swag_from("documentation/artists/delete_artist.yml", methods=["DELETE"])
 def delete_artist_by_id(artist_id):
     """Delete Artist by id route."""
-    artist = models.storage.get(Artist, artist_id)
+    artist = storage.get(Artist, artist_id)
     if artist:
-        models.storage.delete(artist)
-        models.storage.save()
-        return jsonify({}), 200
-    return jsonify({"error": "Not found"}), 404
+        storage.delete(artist)
+        storage.save()
+        return make_response(jsonify({}), 200)
+    return abort(404, description="Artist not found")
 
 
-@api_views.route('/artist', methods=['POST'], strict_slashes=False)
+@api_views.route("/artist", methods=["POST"], strict_slashes=False)
+@swag_from("documentation/artists/post_artist.yml", methods=["POST"])
 def create_artist():
     """Creates a new Artist object"""
+    if not request.get_json():
+        return jsonify({"error": "Not a JSON"}), 400
     data = request.get_json()
-    if not data:
-        return jsonify({'error': 'Not a JSON'}), 400
-
-    if 'title' not in data:
-        return jsonify({'error': 'Missing title'}), 400
-    elif 'artist_id' not in data:
-        return jsonify({'error': 'Missing artist_id'}), 400
-
-    new_artist = Artist(**data)
-    new_artist.save()
-    return jsonify(new_artist.to_dict()), 201
+    if "email" not in data:
+        abort(400, description="Missing email")
+    if "password" not in data:
+        abort(400, description="Missing password")
+    if "first_name" not in data:
+        abort(400, description="Missing first_name")
+    artist = Artist(**data)
+    artist.save()
+    return make_response(jsonify(artist.to_dict()), 201)
 
 
-@api_views.route('/artists/<artist_id>', methods=['PUT'])
+@api_views.route("/artists/<artist_id>", methods=["PUT"])
+@swag_from("documentation/artists/put_artist.yml", methods=["PUT"])
 def alter_artist_by_id(artist_id):
     """Alter Artist by id route."""
-    artist = models.storage.get(Artist, artist_id)
+    artist = storage.get(Artist, artist_id)
     if artist:
-        data = {}
-        try:
-            data = request.get_json()
-            dont_touch = ["id", "state_id", "created_at", "updated_at"]
-            filtered_data = {
-                key: data[key] for key in list(
-                    filter(
-                        lambda key: key not in dont_touch, data
-                    )
-                )
-            }
-            if type(data) is dict:
-                for key, value in filtered_data.items():
-                    setattr(artist, key, value)
-                artist.save()
-                return jsonify(artist.to_dict()), 200
-        except Exception:
-            return jsonify({"error": "Not a JSON"}), 400
-    return jsonify({"error": "Not found"}), 404
+        if not request.get_json():
+            abort(400, description="Not a JSON")
+        data = request.get_json()
+        for key, value in data.items():
+            if key not in ["id", "email", "created_at", "updated_at"]:
+                setattr(artist, key, value)
+        artist.save()
+        return make_response(jsonify(artist.to_dict()), 200)
+    return abort(404, description="Artist not found")
+
+
+@api_views.route("/artists/<artist_id>/follow", methods=["POST"])
+@swag_from("documentation/artists/follow_artist.yml", methods=["POST"])
+def follow_artist(artist_id):
+    """Follow an artist."""
+    artist = storage.get(Artist, artist_id)
+    if artist:
+        if not request.get_json():
+            abort(400, description="Not a JSON")
+        data = request.get_json()
+        if "artist_id" not in data:
+            abort(400, description="Missing artist_id")
+        following_id = data["artist_id"]
+        following_artist = storage.get(Artist, following_id)
+        if following_artist:
+            if following_artist in artist.following:
+                return make_response(jsonify({}), 200)
+            artist.following.append(following_artist)
+            artist.save()
+            return make_response(jsonify({}), 200)
+        return abort(404, description="artist not found")
+    return abort(404, description="Artist you want to follow not found")
+
+
+@api_views.route("/artists/<artist_id>/unfollow", methods=["POST"])
+@swag_from("documentation/artists/unfollow_artist.yml", methods=["POST"])
+def unfollow_artist(artist_id):
+    """Unfollow an artist."""
+    artist = storage.get(Artist, artist_id)
+    if artist:
+        if not request.get_json():
+            abort(400, description="Not a JSON")
+        data = request.get_json()
+        if "artist_id" not in data:
+            abort(400, description="Missing artist_id")
+        following_id = data["artist_id"]
+        following_artist = storage.get(Artist, following_id)
+        if following_artist:
+            if following_artist not in artist.following:
+                return make_response(jsonify({}), 200)
+            following_artist.following.remove(artist)
+            following_artist.save()
+            return make_response(jsonify({}), 200)
+        return abort(404, description="artist not found")
+    return abort(404, description="Artist you want to unfollow not found")
+
+
+@api_views.route("/artists/<artist_id>/followers", methods=["GET"])
+@swag_from("documentation/artists/get_followers.yml", methods=["GET"])
+def get_followers(artist_id):
+    """Get followers of an artist."""
+    artist = storage.get(Artist, artist_id)
+    if artist:
+        followers = artist.followers
+        result = []
+        for follower in followers:
+            follower = follower.to_dict()
+            result.append(follower)
+        return jsonify(result)
+    return abort(404, description="Artist not found")
+
+
+@api_views.route("/artists/<artist_id>/following", methods=["GET"])
+@swag_from("documentation/artists/get_following.yml", methods=["GET"])
+def get_following(artist_id):
+    """Get following of an artist."""
+    artist = storage.get(Artist, artist_id)
+    if artist:
+        following = artist.following
+        result = []
+        for follow in following:
+            follow = follow.to_dict()
+            result.append(follow)
+        return jsonify(result)
+    return abort(404, description="Artist not found")
+
+
+@api_views.route("/artists/<artist_id>/follower_messages", methods=["POST"])
+@swag_from("documentation/artists/follower_messages.yml", methods=["POST"])
+def get_follower_messages(artist_id):
+    """TODO - Get messages between two artists."""
+    pass

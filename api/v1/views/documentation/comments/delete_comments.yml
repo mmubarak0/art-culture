@@ -1,0 +1,15 @@
+Delete a comment object by it's id
+---
+tags:
+  - Comment
+parameters:
+  - name: comment_id
+    in: path
+    description: Comment id
+    required: true
+    type: string
+responses:
+  200:
+    description: Comment deleted
+  404:
+    description: Comment not found

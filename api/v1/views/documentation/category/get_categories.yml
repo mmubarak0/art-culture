@@ -1,0 +1,39 @@
+Gets the list of all categories
+---
+tags:
+    - category
+responses:
+    200:
+        description: OK
+        content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            id:
+                                type: string
+                                description: The category ID
+                            name:
+                                type: string
+                                description: The category name
+                            created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time the category was created
+                            updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time the category was last updated
+                            __class__:
+                                type: string
+                                description: The class name of the object
+                example:
+                    - id: "1"
+                      name: "Category 1"
+                      created_at: "2022-01-01T00:00:00Z"
+                      updated_at: "2022-01-01T00:00:00Z"
+                      __class__: "Category"
+    500:
+        description: Internal Server Error

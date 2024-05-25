@@ -1,0 +1,25 @@
+Update a comment object by it's id
+---
+tags:
+  - Comment
+parameters:
+  - name: comment_id
+    in: path
+    description: Comment id
+    required: true
+    type: string
+  - name: body
+    in: body
+    required: true
+    schema:
+      properties:
+        content:
+          description: Comment object
+          type: string
+responses:
+  200:
+    description: Comment updated
+  404:
+    description: Comment not found
+  400:
+    description: Invalid input

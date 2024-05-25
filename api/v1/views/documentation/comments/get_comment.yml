@@ -1,0 +1,15 @@
+retrive a comment object detail by id
+---
+tags:
+  - Comment
+parameters:
+  - name: comment_id
+    in: path
+    description: Comment id
+    required: true
+    type: string
+responses:
+  200:
+    description: Comment object detail
+  404:
+    description: Comment not found

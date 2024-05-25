@@ -1,0 +1,30 @@
+Unfollow Artist request
+---
+tags:
+    - Artist
+parameters:
+    - name: artist_id
+      in: path
+      description: ID of active artist
+      required: true
+      type: string
+      format: uuid
+      example: 123e4567-e89b-12d3-a456-426614174000
+    - name: body
+      in: body
+      required: true
+      schema:
+        properties:
+            artist_id:
+                type: string
+                format: uuid
+                example: 123e4567-e89b-12d3-a456-426614174000
+response:
+    200:
+        description: Unfollowed artist successfully
+    400:
+        description: Bad Request
+    404:
+        description: Not Found
+    500:
+        description: Internal Server Error

@@ -1,0 +1,21 @@
+Get list of followers of an artist
+---
+tags:
+    - Artist
+parameters:
+    - name: artist_id
+      in: path
+      description: ID of artist
+      required: true
+      type: string
+      format: uuid
+      example: 123e4567-e89b-12d3-a456-426614174000
+response:
+    200:
+        description: OK
+    400:
+        description: Bad Request
+    404:
+        description: Not Found
+    500:
+        description: Internal Server Error

@@ -1,0 +1,46 @@
+Update an artist object
+---
+tags:
+    - Artist
+parameters:
+    - name: artist_id
+      in: path
+      description: ID of artist to update
+      required: true
+      type: string
+      format: uuid
+      example: 123e4567-e89b-12d3-a456-426614174000
+    - name: body
+      in: body
+      required: true
+      schema:
+        properties:
+            email:
+                type: string
+                format: email
+                example: ""
+            password:
+                type: string
+                format: password
+                example: ""
+            first_name:
+                type: string
+                format: string
+                example: ""
+            last_name:
+                type: string
+                format: string
+                example: ""
+            bio:
+                type: string
+                format: string
+                example: ""
+responses:
+    200:
+        description: Updated artist successfully
+    400:
+        description: Bad Request
+    404:
+        description: Not Found
+    500:
+        description: Internal Server Error

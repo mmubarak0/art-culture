@@ -1,0 +1,27 @@
+Create a comment object
+---
+tags:
+  - Comment
+parameters:
+  - name: artwork_id
+    in: path
+    description: Artwork id
+    required: true
+    type: string
+  - name: body
+    in: body
+    required: true
+    schema:
+      properties:
+        content:
+          description: Comment object
+          type: string
+        artist_id:
+          type: string
+responses:
+  201:
+    description: Comment created
+  404:
+    description: Artwork not found
+  400:
+    description: Invalid input
