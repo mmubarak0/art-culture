@@ -1,0 +1,24 @@
+Create a Media
+---
+tags:
+  - Media
+parameters:
+  - name: artwork_id
+    in: path
+    description: Artwork ID
+    required: true
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        url:
+          type: string
+        type:
+          type: string
+        name:
+          type: string

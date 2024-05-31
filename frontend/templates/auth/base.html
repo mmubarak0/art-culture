@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Art & Culture</title>
+    <link rel="stylesheet" type="text/css" href="static/styles/styles.css?{{cache_id}}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a id="logo" href="/">Art & Culture</a>
+        </nav>
+    </header>
+    <script>
+        let artist_id = "{{session['artist_id']}}";
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <div style="margin: 100px;">
+    {% block content %}{% endblock content %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Art and Culture</p>
+    </footer>
+</body>
+
+</html>

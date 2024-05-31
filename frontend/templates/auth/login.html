@@ -1,0 +1,15 @@
+{% extends "auth/base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/styles/login-styles.css">
+<form method="post" action="/login">
+    <label for="email">Your email</label>
+    <input type="email" name="email" placeholder="Email" required>
+    <label for="password">Password</label>
+    {% if forget_password %}
+        <p>Forgot your password? <a href="/reset_password">Reset Password</a></p>
+    {% endif %}
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="submit" name="Login" value="Login">
+</form>
+<p>Don't have an account? <a href="/signup">Signup</a></p>
+{% endblock content %}

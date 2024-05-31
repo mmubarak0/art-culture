@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block about %}
+<link rel="stylesheet" href="static/styles/about-styles.css?{{cache_id}}">
+<main>
+    <section id="main-section">
+        <h1>Art & culture</h1>
+        <p>Our platform provides an immersive journey </p>
+        <p>into the world of art and culture. </p>
+        <p>Explore diverse forms of art and cultural </p>
+        <p>expressions from around the globe, </p>
+        <p>connect with other enthusiasts, and </p>
+        <p>celebrate the richness of human creativity. </p>
+        <button onClick='window.location.pathname = "/signup"'>Create account now</button>
+    </section>
+    <section id="features">
+        <h1>Features</h1>
+        <ul class="fancy-list">
+            <li>Explore a variety of posts related to art and culture from around the world.</li>
+            <li>Engage with the posts by sharing them, liking them, or leaving a comment.</li>
+            <li>Connect with other art and culture enthusiasts through our messaging feature.</li>
+            <li>Stay updated about new posts, comments, likes, and messages with our notifications feature.</li>
+            <li>Connect with artists from around the world for those interested in purchasing art.</li>
+        </ul>
+        <img src="static/images/post-profile.jpg" alt="">
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>Art and Culture was created by Mbali Ramakgasha and Mohammed Mubarak during their software engineering
+            programme at ALX Africa. It's designed to bridge the gap between cultures and bring the beauty of global
+            arts to your fingertips.</p>
+        <img src="static/images/post-profile.jpg" alt="">
+    </section>
+
+    <section id="explore-and-learn">
+        <h2>Explore and Learn</h2>
+        <p>Embark on a journey of discovery with our platform. Explore a wide range of cultures and arts from around
+            the world and learn about their history, significance, and unique features.</p>
+        <div>
+            <img src="static/images/post-profile.jpg" alt="">
+            <img src="static/images/post-profile.jpg" alt="">
+            <img src="static/images/post-profile.jpg" alt="">
+        </div>
+    </section>
+
+    <section id="showcase-and-interact">
+        <h2>Showcase and Interact</h2>
+        <p>Showcase your own art, share your experiences, interact with other users, or simply enjoy being part of a
+            community that appreciates and celebrates diversity in art and culture.</p>
+    </section>
+
+    <section id="find-your-next-adventure">
+        <h2>Find Your Next Adventure</h2>
+        <p>Use our platform to explore uncharted territories in the world of art and culture. Whether you're looking
+            to learn a new dance form, understand the symbolism in Native American art, or discover the vibrant
+            world of Korean Hanbok fashion, your next adventure awaits here.</p>
+    </section>
+
+    <section id="rights-protection">
+        <h2>We Respect and Protect Your Rights</h2>
+        <p>At Art and Culture, we understand the importance of intellectual property rights and are committed to
+            their protection. We assure you that your contributions will always be recognized and credited. When you
+            share your art and experiences with our community, you not only retain your rights to your work, but
+            also help enrich the world with your unique perspective. Let's celebrate diversity in art and culture
+            together!</p>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2025 Art and Culture</p>
+</footer>
+{% endblock about %}

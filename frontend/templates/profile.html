@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block profile %}
+<link rel="stylesheet" type="text/css" href="static/styles/profile-styles.css?{{cache_id}}">
+<main>
+    <section id="profile-details">
+        <img src="static/images/profile.jpg" alt="Profile Picture">
+        <h1>Your Name</h1>
+        <p>Your Bio...</p>
+        <p><strong>Email:</strong> user@example.com</p>
+        <p><strong>Location:</strong> San Francisco, CA</p>
+        <p><strong>Joined:</strong> January 1, 2024</p>
+        <p><strong>Followers:</strong> 200</p>
+        <p><strong>Following:</strong> 150</p>
+
+    </section>
+    <section id="posts">
+        <h2>Your Posts</h2>
+        <article>
+            <div class="post-header">
+                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
+                <h3 class="username">Username</h3>
+            </div>
+            <p>Post content...</p>
+            <div class="post-actions">
+                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
+                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
+            </div>
+        </article>
+        <article>
+            <div class="post-header">
+                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
+                <h3 class="username">Username</h3>
+            </div>
+            <p>Post content...</p>
+            <div class="post-actions">
+                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
+                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
+            </div>
+        </article>
+        <article>
+            <div class="post-header">
+                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
+                <h3 class="username">Username</h3>
+            </div>
+            <p>Post content...</p>
+            <div class="post-actions">
+                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
+                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
+            </div>
+        </article>
+        <article>
+            <div class="post-header">
+                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
+                <h3 class="username">Username</h3>
+            </div>
+            <p>Post content...</p>
+            <div class="post-actions">
+                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
+                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
+            </div>
+        </article>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 My Website</p>
+</footer>
+{% endblock profile %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block feed %}
+<main>
+    <aside id="sidebar">
+        <h3>{{artistName}}</h3>
+        <p>Your Star Rating: ⭐⭐⭐⭐⭐</p>
+        <p>{{bio}}</p>
+        <a href="#" class="normal-link">edit your bio</a>
+        <div class="create-artwork">
+            <a  href="/create_artwork" class="button button-info" type="button">Create Artwork</a>
+        </div>
+    </aside>
+    <section id="main-content">
+        <!-- Add more posts as needed -->
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 My Website</p>
+</footer>
+<script src="static/scripts/feed.js?{{cache_id}}"></script>
+{% endblock feed %}

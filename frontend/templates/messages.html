@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block messages %}
+<link rel="stylesheet" type="text/css" href="static/styles/messages-styles.css?{{cache_id}}">
+<div class="container">
+    <div class="sidebar">
+        <h2>Chats</h2>
+        <!-- List of chats -->
+        <div class="chat-search">
+            <input type="text" placeholder="Search">
+        </div>
+        <!-- Chat list -->
+        <div class="chat-list">
+            <div class="chat active">
+                <img src="static/images/post-profile.jpg" alt="User Avatar" class="chat-avatar">
+                <div class="chat-info">
+                    <h3>John Doe</h3>
+                    <p>Hello, how are you?</p>
+                </div>
+            </div>
+            <div class="chat">
+                <img src="static/images/post-profile.jpg" alt="User Avatar" class="chat-avatar">
+                <div class="chat-info">
+                    <h3>Sam altman</h3>
+                    <p class="unread">Hello, how are you?</p>
+                </div>
+            </div>
+            <div class="chat">
+                <img src="static/images/post-profile.jpg" alt="User Avatar" class="chat-avatar">
+                <div class="chat-info">
+                    <h3>Max blank</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae debitis omnis minima ipsam nulla, fugiat odio ea dolorum commodi magni iure voluptatem nisi nemo cum dolorem eaque tenetur! Similique, recusandae.</p>
+                </div>
+            </div>
+            <div class="chat">
+                <img src="static/images/post-profile.jpg" alt="User Avatar" class="chat-avatar">
+                <div class="chat-info">
+                    <h3>ki2kid</h3>
+                    <p>hi</p>
+                </div>
+            </div>
+            <div class="chat">
+                <img src="static/images/post-profile.jpg" alt="User Avatar" class="chat-avatar">
+                <div class="chat-info">
+                    <h3>Mohammed mubarak abdallah hamadelneel</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-window">
+        <div class="header">
+            <img src="static/images/post-profile.jpg" alt="User Avatar" class="header-avatar">
+            <h2>John Doe</h2>
+            <!-- Rest of the chat window content goes here -->
+        </div>
+        <!-- Chat messages -->
+        <div class="messages">
+            <div class="message received">
+                <p>Received message...</p>
+            </div>
+            <div class="message sent">
+                <p>Sent message...</p>
+            </div>
+            <div class="message received">
+                <p>Received message...</p>
+            </div>
+            <div class="message sent">
+                <p>Sent message...</p>
+            </div>
+            <div class="message received">
+                <p>Received message...</p>
+            </div>
+            <div class="message sent">
+                <p>Sent message...</p>
+            </div>
+            <div class="message received">
+                <p>Received message...</p>
+            </div>
+            <div class="message sent">
+                <p>Sent message...</p>
+            </div>
+            <div class="message received">
+                <p>Received message...</p>
+            </div>
+            <div class="message sent">
+                <p>Sent message...</p>
+            </div>
+            <!-- Repeat .message for each message -->
+        </div>
+        <!-- Message input -->
+        <div class="message-input">
+            <input type="text" placeholder="Type a message">
+            <button>Send</button>
+        </div>
+    </div>
+</div>
+{% endblock messages %}

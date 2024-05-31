@@ -7,6 +7,7 @@ from models.artwork import Artwork
 from models.artist import Artist
 from api.v1.views import api_views
 from flasgger.utils import swag_from
+import os
 
 
 @api_views.route("/artworks", methods=["GET"], strict_slashes=False)
@@ -39,6 +40,15 @@ def delete_artwork(artwork_id):
     artwork = storage.get(Artwork, artwork_id)
     if artwork is None:
         abort(404, description="Artwork not found")
+    # first you should delete all medias connected to the artwork
+    medias = artwork.media
+    comments = artwork.comments
+    for media in medias:
+        if os.path.exists("frontend" + media.url):
+            os.remove("frontend" + media.url)
+        storage.delete(media)
+    for comment in comments:
+        storage.delete(comment)
     storage.delete(artwork)
     storage.save()
     return make_response(jsonify({}), 200)

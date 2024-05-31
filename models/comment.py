@@ -8,9 +8,10 @@ from sqlalchemy.orm import relationship
 
 class Comment(BaseModel, Base):
     """Comment columns"""
-    __tablename__ = 'comments'
-    artist_id = Column(String(60), ForeignKey('artists.id'), nullable=False)
-    artwork_id = Column(String(60), ForeignKey('artworks.id'), nullable=False)
+
+    __tablename__ = "comments"
+    artist_id = Column(String(60), ForeignKey("artists.id"), nullable=False)
+    artwork_id = Column(String(60), ForeignKey("artworks.id"), nullable=False)
     content = Column(String(5000), nullable=False)
 
     def __repr__(self):

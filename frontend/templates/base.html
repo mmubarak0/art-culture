@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Art & Culture</title>
+    <link rel="stylesheet" type="text/css" href="static/styles/styles.css?{{cache_id}}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a id="logo" href="/">Art & Culture</a>
+            {% if session['artist_id'] %}
+            <div id="navigation">
+                <a href="feed">Feed <img src="static/images/icons/home-add-svgrepo-com.svg" alt=""></a>
+                <a href="messages">Messages <img src="static/images/icons/messages-3-svgrepo-com.svg" alt=""></a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Notifications <img src="static/images/icons/notification-bell-svgrepo-com.svg"
+                            alt=""></a>
+                    <div class="dropdown-content">
+                        <a href="#">Notifications 1</a>
+                        <a href="#">Notifications 2</a>
+                        <a href="#">Notifications 3</a>
+                    </div>
+                </div>
+                <a href="#">search <img src="static/images/icons/search-alt-2-svgrepo-com.svg" alt=""></a>
+            </div>
+            <div class="dropdown-profile">
+                <img class="dropbtn-profile" src="static/images/profile.jpg" alt="Profile Picture">
+                <div class="dropdown-content-profile">
+                    <a href="/logout">Logout</a>
+                    <a href="profile_settings">Profile Settings</a>
+                    <a href="profile">Profile Details</a>
+                </div>
+            </div>
+            {% else %}
+            <div id="navigation">
+                <a href="/login">Login <img src="static/images/icons/login-2-svgrepo-com.svg" alt="login"></a>
+                <a href="/signup">Signup <img src="static/images/icons/add-new-user-svgrepo-com.svg" alt="signup"></a>
+            </div>
+            {% endif %}
+        </nav>
+    </header>
+    <script>
+        let ARTIST_ID = "{{session['artist_id']}}";
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% block about %}{% endblock about %}
+    {% block feed %}{% endblock feed %}
+    {% block messages %}{% endblock messages %}
+    {% block profile_settings %}{% endblock profile_settings %}
+    {% block profile %}{% endblock profile %}
+</body>
+
+</html>
