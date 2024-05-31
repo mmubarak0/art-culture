@@ -9,8 +9,9 @@ from sqlalchemy.orm import relationship
 
 class Media(BaseModel, Base):
     """Media columns"""
-    __tablename__ = 'medias'
-    artwork_id = Column(String(60), ForeignKey('artworks.id'), nullable=False)
+
+    __tablename__ = "medias"
+    artwork_id = Column(String(60), ForeignKey("artworks.id"), nullable=False)
     url = Column(String(550), nullable=False)
     type = Column(String(550), nullable=False)
     name = Column(String(256))

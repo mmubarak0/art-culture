@@ -1,0 +1,57 @@
+#profile-details {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 30%;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#profile-details img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: rotate 1s ease-in-out;
+    animation-duration: 3s;
+    animation-iteration-count: 2;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(-10deg);
+    }
+}
+
+#posts {
+    padding: 20px;
+    width: 50%;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

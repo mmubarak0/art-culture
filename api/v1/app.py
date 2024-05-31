@@ -3,10 +3,9 @@
 from models import storage
 from api.v1.views import api_views
 from os import environ
-from flask import Flask, render_template, make_response, jsonify
+from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from flasgger import Swagger
-from flasgger.utils import swag_from
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
@@ -30,6 +29,15 @@ def not_found(error):
     """
     return make_response(jsonify({'error': "Not found"}), 404)
 
+@app.errorhandler(400)
+def bad_request(error):
+    """ 400 Error
+    ---
+    responses:
+      400:
+        description: bad request
+    """
+    return make_response(jsonify({'error': "Bad request"}), 400)
 
 app.config['SWAGGER'] = {
     'title': 'Art and Culture Restful API',

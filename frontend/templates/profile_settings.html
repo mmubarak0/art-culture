@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block profile_settings %}
+<link rel="stylesheet" href="static/styles/profile_settings-styles.css?{{cache_id}}">
+<main>
+    <section id="settings">
+        <h1>Profile Settings</h1>
+        <form>
+            <label for="profile-picture">Profile Picture:</label>
+            <input type="file" id="profile-picture" name="profile-picture">
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+
+            <label for="notifications">Email Notifications:</label>
+            <select id="notifications" name="notifications">
+                <option value="all">All</option>
+                <option value="important">Only Important</option>
+                <option value="none">None</option>
+            </select>
+
+            <input type="submit" value="Save Changes">
+        </form>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 My Website</p>
+</footer>
+{% endblock profile_settings %}

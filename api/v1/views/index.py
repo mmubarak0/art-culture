@@ -10,19 +10,17 @@ from models.engine.db_storage import classes
 import models
 
 
-@api_views.route('/status')
+@api_views.route("/status")
 def get_status():
-    """ send status api"""
+    """send status api"""
     return jsonify({"status": "OK"})
 
 
-@api_views.route('/stats')
+@api_views.route("/stats")
 def get_count():
     """Frequency list of the database objects."""
     classes_counts = dict(
-        (
-            cls.__tablename__, models.storage.count(cls)
-        ) for cls in classes.values()
+        (cls.__tablename__, models.storage.count(cls)) for cls in classes.values()
     )
     return jsonify(classes_counts)
 

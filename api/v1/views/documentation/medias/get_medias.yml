@@ -1,0 +1,19 @@
+Get media list
+---
+tags:
+  - Media
+parameters:
+  - name: artwork_id
+    in: path
+    description: Artwork ID
+    required: true
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+responses:
+  200:
+    description: Media list returned successfully
+  404:
+    description: Artwork not found
+  500:
+    description: Internal server error
