@@ -204,6 +204,12 @@ article {
 
 .content>div>img.i3 {
     width: 40%;
+    /* height: 300px; */
+    margin-right: 10px;
+}
+.content>div>img.i3.x3 {
+    width: calc(80% + 10px);
+    height: 300px;
     margin-right: 10px;
 }
 
@@ -218,7 +224,9 @@ article {
 }
 
 .post-actions {
-    margin-left: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
 }
 
 .post-actions a {
@@ -507,7 +515,7 @@ textarea {
     background: #cce7f7;
     display: flex;
     position: relative;
-    top: -13px;
+    top: -128px;
     left: 411px;
     flex-direction: column;
     width: 100px;

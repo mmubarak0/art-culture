@@ -1,9 +1,10 @@
 #!/use/bin/env python3
 """ Art and culture authentication views """
-from flask import render_template, redirect, session, request, url_for
+from flask import render_template, redirect, session, request, current_app as app
 from models import storage
 from models.artist import Artist
 from frontend.views import app_views
+import os
 
 
 @app_views.route("/login", methods=["POST", "GET"], strict_slashes=False)
@@ -36,17 +37,25 @@ def signup():
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
         bio = request.form.get("bio")
+        profile_picture = request.files.get("profile_picture")
         if not email or not password:
             return redirect("/signup")
         for user in storage.all(Artist).values():
             if user.email == email:
                 return redirect("/signup")
+        profile_picture_url = ""
+        if len(profile_picture.filename):
+            if os.path.exists(os.path.join(app.config["UPLOAD_FOLDER"], "avatars")) is False:
+                os.mkdir(os.path.join(app.config["UPLOAD_FOLDER"], "avatars"))
+            profile_picture.save(os.path.join(app.config["UPLOAD_FOLDER"], "avatars", profile_picture.filename))
+            profile_picture_url = os.path.join(app.config["UPLOAD_FOLDER"][8:], "avatars", profile_picture.filename)
         user = Artist(
             email=email,
             password=password,
             first_name=first_name,
             last_name=last_name,
             bio=bio,
+            profile_picture=profile_picture_url
         )
         storage.new(user)
         storage.save()

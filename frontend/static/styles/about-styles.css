@@ -4,13 +4,16 @@ main {
     box-sizing: border-box;
     flex-direction: column;
     font-size: 1.3em;
+    font-family: 'Comic Sans MS', cursive;
 }
-main img {
+/* main img {
     width: 250px;
     height: 250px;
-}
+} */
 #main-section {
-    background: radial-gradient(circle, #cee7ff, #8ae8ff, #4fb0ff);
+    background: url('/static/images/cover-image.png') no-repeat;
+    background-size: cover;
+    height: 1000px;
     padding: 20px;
     margin: 5px;
     border-bottom: 2px solid #eee;
@@ -23,7 +26,6 @@ main img {
     margin: 0;
     margin-left: 250px;
     color: #005bf7;
-    font-family: 'Comic Sans MS', cursive;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -42,11 +44,18 @@ main img {
     margin: 20px;
     margin-left: 250px;
     margin-right: 250px;
-    color: #01287e;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #010101;
+    background: rgba(255, 255, 255, 0.593);
     font-size: 1.5em;
+    border-radius: 20px;
     text-align: justify;
     line-height: 1.5;
+    transition: all 0.4s ease;
+    text-align: center;
+}
+#main-section p:hover {
+    margin-left: 0;
+    margin-right: 0;
 }
 #main-section button {
     position: absolute;
@@ -54,8 +63,8 @@ main img {
     margin-left: 250px;
     margin-right: 250px;
     padding: 10px;
-    background-color: #005bf7;
-    color: white;
+    background-color: #ecf3ff;
+    color: #005bf7;
     border: none;
     border-radius: 5px;
     font-size: 1.5em;
@@ -71,6 +80,8 @@ main img {
 
 #features {
     display: flex;
+    flex-wrap: wrap;
+    flex-grow: 2;
     background: radial-gradient(circle, #ceddff, #8aafff, #4f87ff);
     padding: 20px;
     margin: 5px;
@@ -89,7 +100,6 @@ main img {
 
 #features h1 {
     color: #01287e;
-    font-family: 'Comic Sans MS', cursive;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -100,8 +110,8 @@ main img {
 }
 
 #features img {
-    width: 250px;
-    height: 250px;
+    width: 600px;
+    /* height: 600px; */
     border-bottom: 2px solid #ddd;
     border-radius: 15px 50px;
     transform: rotate(-5deg);
@@ -128,7 +138,6 @@ main img {
     margin: 20px;
     margin-top: -200px;
     color: #01287e;
-    font-family: 'Comic Sans MS', cursive;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -144,8 +153,8 @@ main img {
     transform: rotate(5deg);
 }
 #about img {
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    /* height: 300px; */
     border-bottom: 2px solid #ccc;
     border-radius: 50px 15px;
     margin: 10px;
@@ -176,6 +185,18 @@ main img {
     background-color: #ffcef0;
     border-radius: 50%;
     animation: move 3s infinite;
+}
+
+#about p .link {
+    color: #01287e;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+#about p .link:hover {
+    color: #005bf7;
 }
 
 @keyframes move {
@@ -215,7 +236,6 @@ main img {
 #explore-and-learn h2 {
     margin: 20px;
     color: #01287e;
-    font-family: 'Comic Sans MS', cursive;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -235,7 +255,6 @@ main img {
 #explore-and-learn p {
     margin: 20px;
     color: #01287e;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5em;
     text-align: justify;
     line-height: 1.5;
@@ -309,7 +328,6 @@ main img {
 #showcase-and-interact h2 {
     margin: 20px;
     color: #01287e;
-    font-family: 'Comic Sans MS', cursive;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -329,7 +347,6 @@ main img {
 #showcase-and-interact p {
     margin: 20px;
     color: #01287e;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5em;
     text-align: justify;
     line-height: 1.5;
@@ -342,8 +359,9 @@ main img {
 }
 
 #showcase-and-interact img {
-    width: 350px;
-    height: 350px;
+    width: 50%;
+    height: 50%;
+    margin: auto;
     border-bottom: 2px solid #aaa;
     border-radius: 15px 50px;
     transform: rotate(-5deg);
@@ -362,6 +380,8 @@ main img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 #find-your-next-adventure::before {
@@ -403,7 +423,6 @@ main img {
 #find-your-next-adventure h2 {
     margin: 20px;
     color: #01287e;
-    font-family: 'Comic Sans MS', cursive;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -423,48 +442,41 @@ main img {
 #find-your-next-adventure p {
     margin: 20px;
     color: #01287e;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5em;
     text-align: justify;
     line-height: 1.5;
 }
 #features li {
-    font-family: 'Times New Roman', serif;
     font-size: 1.3em;
     text-align: left;
     line-height: 0.8;
 }
 
 #about p {
-    font-family: 'Times New Roman', serif;
     font-size: 1.3em;
     text-align: justify;
     line-height: 1.6;
 }
 
 #explore-and-learn p {
-    font-family: 'Times New Roman', serif;
     font-size: 1.3em;
     text-align: justify;
     line-height: 1.6;
 }
 
 #showcase-and-interact p {
-    font-family: 'Times New Roman', serif;
     font-size: 1.3em;
     text-align: justify;
     line-height: 1.6;
 }
 
 #find-your-next-adventure p {
-    font-family: 'Times New Roman', serif;
     font-size: 1.3em;
     text-align: justify;
     line-height: 1.6;
 }
 
 #rights-protection p {
-    font-family: 'Times New Roman', serif;
     font-size: 1.3em;
     text-align: justify;
     line-height: 1.6;
@@ -476,8 +488,9 @@ main img {
 }
 
 #find-your-next-adventure img {
-    width: 350px;
-    height: 350px;
+    width: 50%;
+    height: 50%;
+    margin: auto;
     border-bottom: 2px solid #999;
     border-radius: 15px 50px;
     transform: rotate(-5deg);

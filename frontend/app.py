@@ -5,7 +5,8 @@ from flask import Flask
 from frontend.views import app_views
 
 app = Flask(__name__, static_url_path="/static", static_folder="static")
-app.config["UPLOAD_FOLDER"] = "frontend/static/images/upload"
+app.config["UPLOAD_FOLDER"] = "frontend/static/images/upload/"
+app.config["API_URL"] = "http://172.21.137.143:5004/"
 
 app.register_blueprint(app_views)
 app.secret_key = "artandculture"

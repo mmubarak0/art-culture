@@ -5,7 +5,7 @@ from flask import jsonify, request, abort, make_response
 from models import storage
 from models.artwork import Artwork
 from models.artist import Artist
-from api.v1.views import api_views
+from api.v1.views import api_views, path_join
 from flasgger.utils import swag_from
 import os
 
@@ -44,8 +44,8 @@ def delete_artwork(artwork_id):
     medias = artwork.media
     comments = artwork.comments
     for media in medias:
-        if os.path.exists("frontend" + media.url):
-            os.remove("frontend" + media.url)
+        if os.path.exists(path_join("frontend", media.url)):
+            os.remove(path_join("frontend", media.url))
         storage.delete(media)
     for comment in comments:
         storage.delete(comment)

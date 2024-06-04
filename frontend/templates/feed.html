@@ -2,9 +2,9 @@
 {% block feed %}
 <main>
     <aside id="sidebar">
-        <h3>{{artistName}}</h3>
-        <p>Your Star Rating: ⭐⭐⭐⭐⭐</p>
-        <p>{{bio}}</p>
+        <h3>{{session_artist.first_name}} {{session_artist.last_name}}</h3>
+        <!-- <p>Your Star Rating: ⭐⭐⭐⭐⭐</p> -->
+        <p>{{session_artist.bio}}</p>
         <a href="#" class="normal-link">edit your bio</a>
         <div class="create-artwork">
             <a  href="/create_artwork" class="button button-info" type="button">Create Artwork</a>
@@ -17,5 +17,5 @@
 <footer>
     <p>&copy; 2024 My Website</p>
 </footer>
-<script src="static/scripts/feed.js?{{cache_id}}"></script>
+<script type="module" src="/static/scripts/feed.js?{{cache_id}}"></script>
 {% endblock feed %}
