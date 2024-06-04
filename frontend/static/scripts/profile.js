@@ -1,11 +1,11 @@
-import loadFeed from './base.js';
+import loadFeed from "./base.js";
 
 // Load the feed when the page is loaded.
 $(document).ready(function () {
-    const artworks_url = `${window.location.origin.slice(0, -5)}:5004/api/v1/artists/${ARTIST_ID}/artworks/`;
+    const artworks_url = `http://${window.location.hostname}:5004/api/v1/artists/${ARTIST_ID}/artworks/`;
     loadFeed(artworks_url);
-    $('#scrollUp').click(() => {
+    $("#scrollUp").click(() => {
         // reload the feed
         loadFeed(artworks_url, true);
-    })
+    });
 });
