@@ -16,6 +16,8 @@ class Artist(BaseModel, Base):
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
     bio = Column(String(1024), nullable=True)
+    location = Column(String(128), nullable=True)
+    profile_picture = Column(String(128), nullable=True)
     artworks = relationship("Artwork", backref="artist")
     messages_outbox = relationship(
         "Message", primaryjoin="Artist.id==Message.sender_id", backref="sender"

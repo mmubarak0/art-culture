@@ -4,6 +4,8 @@ from flask import Blueprint
 
 api_views = Blueprint("api_views", __name__, url_prefix="/api/v1")
 
+def path_join(a, b):
+    return a.strip("/") + "/" + b.strip("/")
 
 from api.v1.views.index import *
 from api.v1.views.artists import *

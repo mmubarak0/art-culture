@@ -3,65 +3,23 @@
 <link rel="stylesheet" type="text/css" href="static/styles/profile-styles.css?{{cache_id}}">
 <main>
     <section id="profile-details">
-        <img src="static/images/profile.jpg" alt="Profile Picture">
-        <h1>Your Name</h1>
-        <p>Your Bio...</p>
-        <p><strong>Email:</strong> user@example.com</p>
-        <p><strong>Location:</strong> San Francisco, CA</p>
-        <p><strong>Joined:</strong> January 1, 2024</p>
-        <p><strong>Followers:</strong> 200</p>
-        <p><strong>Following:</strong> 150</p>
+        <img src={{session_artist.profile_picture}} alt="Profile Picture">
+        <h1>{{session_artist.first_name}} {{session_artist.last_name}}</h1>
+        <p>{{session_artist.bio}}</p>
+        <p><strong>Email:</strong> {{session_artist.email}}</p>
+        <p><strong>Location:</strong> {{session_artist.location}}</p>
+        <p><strong>Joined:</strong> {{session_artist.created_at}}</p>
+        <p><strong>Followers:</strong>{{followers}}</p>
+        <p><strong>Following:</strong>{{following}}</p>
 
     </section>
-    <section id="posts">
-        <h2>Your Posts</h2>
-        <article>
-            <div class="post-header">
-                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
-                <h3 class="username">Username</h3>
-            </div>
-            <p>Post content...</p>
-            <div class="post-actions">
-                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
-                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
-            </div>
-        </article>
-        <article>
-            <div class="post-header">
-                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
-                <h3 class="username">Username</h3>
-            </div>
-            <p>Post content...</p>
-            <div class="post-actions">
-                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
-                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
-            </div>
-        </article>
-        <article>
-            <div class="post-header">
-                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
-                <h3 class="username">Username</h3>
-            </div>
-            <p>Post content...</p>
-            <div class="post-actions">
-                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
-                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
-            </div>
-        </article>
-        <article>
-            <div class="post-header">
-                <img class="post-profile-pic" src="static/images/post-profile.jpg" alt="Post Profile Picture">
-                <h3 class="username">Username</h3>
-            </div>
-            <p>Post content...</p>
-            <div class="post-actions">
-                <a href="#"><img src="static/images/icons/share-2-svgrepo-com.svg" alt="share"></a>
-                <a href="#"><img src="static/images/icons/more-svgrepo-com.svg" alt="more"></a>
-            </div>
-        </article>
+    <section id="main-content">
+
     </section>
 </main>
 <footer>
     <p>&copy; 2024 My Website</p>
 </footer>
+<script type="module" src="/static/scripts/profile.js"></script>
+<!-- <script type="module" src="feed.js"></script> -->
 {% endblock profile %}

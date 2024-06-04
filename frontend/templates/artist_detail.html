@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block artist_detail %}
+<link rel="stylesheet" type="text/css" href="/static/styles/profile-styles.css?{{cache_id}}">
+<main>
+    <section id="profile-details">
+        <img src={{artist.profile_picture}} alt="Profile Picture">
+        <h1>{{artist.first_name}} {{artist.last_name}}</h1>
+        <p>{{artist.bio}}</p>
+        <p><strong>Email:</strong> {{artist.email}}</p>
+        <p><strong>Location:</strong> {{artist.location}}</p>
+        <p><strong>Joined:</strong> {{artist.created_at}}</p>
+        <p><strong>Followers:</strong><span id="followers">{{followers}}</span></p>
+        <p><strong>Following:</strong><span id="following">{{following}}</span></p>
+        {% if session_artist.id != artist.id %}
+            {% if follow %}
+                <button id="follow" class="button button-info">Unfollow</button>
+            {% else %}
+                <button id="follow" class="button button-info">Follow</button>
+            {% endif %}
+        {% endif %}
+
+    </section>
+    <section id="main-content">
+
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 My Website</p>
+</footer>
+<script>
+    const DETAIL_ID = "{{artist.id}}";
+</script>
+<script type="module" src="/static/scripts/artist_detail.js"></script>
+{% endblock artist_detail %}

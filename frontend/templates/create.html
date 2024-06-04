@@ -2,15 +2,14 @@
 {% block feed %}
 <link rel="stylesheet" href="/static/styles/create-styles.css?{{cache_id}}">
 <div id="createContent">
-    <form action="/create_artwork" method="post" enctype="multipart/form-data">
+    <form action="/create_artwork" method="POST" enctype="multipart/form-data">
         <label for="title">Title</label>
         <input type="text" name="title" id="title" placeholder="Title">
         <label for="description">Description</label>
         <textarea name="description" id="description" placeholder="Description"></textarea>
         <label for="media">Media</label>
         <input type="file" multiple name="media" id="media">
-        <input type="hidden" name="artist_id" value="{{session['artist_id']}}">
-        <button id="submit" class="button button-success">Submit</button>
+        <input type="submit" id="submit" class="button button-success">
     </form>
 </div>
 <footer>

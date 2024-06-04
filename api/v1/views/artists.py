@@ -2,11 +2,12 @@
 """Artwork view."""
 
 import models
-from api.v1.views import api_views
+from api.v1.views import api_views, path_join
 from flask import jsonify, request, abort, make_response
 from models import storage
 from models.artist import Artist
 from flasgger.utils import swag_from
+import os
 
 
 @api_views.route("/artists", methods=["GET"], strict_slashes=False)
@@ -21,7 +22,7 @@ def get_artists():
     return jsonify(result)
 
 
-@api_views.route("/artists/<artist_id>/artworks", methods=["GET"])
+@api_views.route("/artists/<artist_id>/artworks", methods=["GET"], strict_slashes=False)
 @swag_from("documentation/artists/get_artworks_from_artist.yml", methods=["GET"])
 def list_artworks_from_artist(artist_id):
     """Artworks from artist route."""
@@ -36,7 +37,7 @@ def list_artworks_from_artist(artist_id):
     return abort(404, description="Artist not found")
 
 
-@api_views.route("/artists/<artist_id>", methods=["GET"])
+@api_views.route("/artists/<artist_id>", methods=["GET"], strict_slashes=False)
 @swag_from("documentation/artists/get_artist.yml", methods=["GET"])
 def get_artist_by_id(artist_id):
     """Artist by id route."""
@@ -46,12 +47,25 @@ def get_artist_by_id(artist_id):
     return abort(404, description="Artist not found")
 
 
-@api_views.route("/artists/<artist_id>", methods=["DELETE"])
+@api_views.route("/artists/<artist_id>", methods=["DELETE"], strict_slashes=False)
 @swag_from("documentation/artists/delete_artist.yml", methods=["DELETE"])
 def delete_artist_by_id(artist_id):
     """Delete Artist by id route."""
     artist = storage.get(Artist, artist_id)
     if artist:
+        for artwork in artist.artworks:
+            for m in artwork.media:
+                if os.path.exists(path_join("frontend/", m.url)):
+                    os.remove(path_join("frontend/", m.url))
+                storage.delete(m)
+            for comment in artwork.comments:
+                storage.delete(comment)
+            storage.delete(artwork)
+        for comment in artist.comments:
+            storage.delete(comment)
+        if artist.profile_picture and artist.profile_picture != "":
+            if os.path.exists(path_join("frontend/", artist.profile_picture)):
+                os.remove(path_join("frontend/", artist.profile_picture))
         storage.delete(artist)
         storage.save()
         return make_response(jsonify({}), 200)
@@ -76,7 +90,7 @@ def create_artist():
     return make_response(jsonify(artist.to_dict()), 201)
 
 
-@api_views.route("/artists/<artist_id>", methods=["PUT"])
+@api_views.route("/artists/<artist_id>", methods=["PUT"], strict_slashes=False)
 @swag_from("documentation/artists/put_artist.yml", methods=["PUT"])
 def alter_artist_by_id(artist_id):
     """Alter Artist by id route."""
@@ -93,7 +107,7 @@ def alter_artist_by_id(artist_id):
     return abort(404, description="Artist not found")
 
 
-@api_views.route("/artists/<artist_id>/follow", methods=["POST"])
+@api_views.route("/artists/<artist_id>/follow", methods=["POST"], strict_slashes=False)
 @swag_from("documentation/artists/follow_artist.yml", methods=["POST"])
 def follow_artist(artist_id):
     """Follow an artist."""
@@ -106,40 +120,21 @@ def follow_artist(artist_id):
             abort(400, description="Missing artist_id")
         following_id = data["artist_id"]
         following_artist = storage.get(Artist, following_id)
+        print(artist.followers)
         if following_artist:
-            if following_artist in artist.following:
+            if following_artist in artist.followers:
+                artist.followers.remove(following_artist)
+                artist.save()
                 return make_response(jsonify({}), 200)
-            artist.following.append(following_artist)
-            artist.save()
-            return make_response(jsonify({}), 200)
-        return abort(404, description="artist not found")
-    return abort(404, description="Artist you want to follow not found")
-
-
-@api_views.route("/artists/<artist_id>/unfollow", methods=["POST"])
-@swag_from("documentation/artists/unfollow_artist.yml", methods=["POST"])
-def unfollow_artist(artist_id):
-    """Unfollow an artist."""
-    artist = storage.get(Artist, artist_id)
-    if artist:
-        if not request.get_json():
-            abort(400, description="Not a JSON")
-        data = request.get_json()
-        if "artist_id" not in data:
-            abort(400, description="Missing artist_id")
-        following_id = data["artist_id"]
-        following_artist = storage.get(Artist, following_id)
-        if following_artist:
-            if following_artist not in artist.following:
+            else:
+                artist.followers.append(following_artist)
+                artist.save()
                 return make_response(jsonify({}), 200)
-            following_artist.following.remove(artist)
-            following_artist.save()
-            return make_response(jsonify({}), 200)
         return abort(404, description="artist not found")
-    return abort(404, description="Artist you want to unfollow not found")
+    return abort(404, description="Artist you want to follow/unfollow not found")
 
 
-@api_views.route("/artists/<artist_id>/followers", methods=["GET"])
+@api_views.route("/artists/<artist_id>/followers", methods=["GET"], strict_slashes=False)
 @swag_from("documentation/artists/get_followers.yml", methods=["GET"])
 def get_followers(artist_id):
     """Get followers of an artist."""
@@ -154,7 +149,7 @@ def get_followers(artist_id):
     return abort(404, description="Artist not found")
 
 
-@api_views.route("/artists/<artist_id>/following", methods=["GET"])
+@api_views.route("/artists/<artist_id>/following", methods=["GET"], strict_slashes=False)
 @swag_from("documentation/artists/get_following.yml", methods=["GET"])
 def get_following(artist_id):
     """Get following of an artist."""
@@ -169,7 +164,7 @@ def get_following(artist_id):
     return abort(404, description="Artist not found")
 
 
-@api_views.route("/artists/<artist_id>/follower_messages", methods=["POST"])
+@api_views.route("/artists/<artist_id>/follower_messages", methods=["POST"], strict_slashes=False)
 @swag_from("documentation/artists/follower_messages.yml", methods=["POST"])
 def get_follower_messages(artist_id):
     """TODO - Get messages between two artists."""
