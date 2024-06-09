@@ -54,4 +54,5 @@ if __name__ == "__main__":
         host = '0.0.0.0'
     if not port:
         port = '5004'
-    app.run(host=host, port=port, threaded=True)
+    context = ('./fullchain.pem', './privkey.pem')
+    app.run(host=host, port=port, threaded=True, ssl_context=context)

@@ -6,7 +6,7 @@ from frontend.views import app_views
 
 app = Flask(__name__, static_url_path="/static", static_folder="static")
 app.config["UPLOAD_FOLDER"] = "frontend/static/images/upload/"
-app.config["API_URL"] = "http://172.21.137.143:5004/"
+app.config["API_URL"] = "https://artandculture.ki2kid.tech:5004/"
 
 app.register_blueprint(app_views)
 app.secret_key = "artandculture"
@@ -20,4 +20,5 @@ def close_db(error):
 
 if __name__ == "__main__":
     """ Main Function """
-    app.run(host='0.0.0.0', port=5006)
+    context = ('./fullchain.pem', './privkey.pem')
+    app.run(host='0.0.0.0', port=5006, ssl_context=context)

@@ -113,7 +113,7 @@ export default function loadFeed(artworks_url, reload = false) {
 export async function getArtistData(artistId) {
     return new Promise(function (resolve, reject) {
         $.get(
-            `http://${window.location.hostname}:5004/api/v1/artists/${artistId}`,
+            `https://${window.location.hostname}:5004/api/v1/artists/${artistId}`,
             function (artistData) {
                 resolve(artistData);
             }
@@ -202,7 +202,7 @@ export async function getImages(post) {
 // Get post images.
 export async function getPostImage(mediaId) {
     return new Promise(function (resolve, reject) {
-        $.get(`http://${window.location.hostname}:5004/api/v1/medias/${mediaId}`, function (image) {
+        $.get(`https://${window.location.hostname}:5004/api/v1/medias/${mediaId}`, function (image) {
             resolve(image);
         });
     });
@@ -261,7 +261,7 @@ export function createActionLink(className, altText, clickHandler, data, counter
 export function likePost(post, e) {
     const postId = post.id;
     $.post(
-        `http://${window.location.hostname}:5004/api/v1/artworks/${postId}/like`,
+        `https://${window.location.hostname}:5004/api/v1/artworks/${postId}/like`,
         JSON.stringify({
             artist_id: ARTIST_ID,
         }),
@@ -299,7 +299,7 @@ export async function showComments(post, e, update = false) {
 // Update post details.
 export async function updatePost(postId) {
     return new Promise(function (resolve, reject) {
-        $.get(`http://${window.location.hostname}:5004/api/v1/artworks/${postId}`, function (data) {
+        $.get(`https://${window.location.hostname}:5004/api/v1/artworks/${postId}`, function (data) {
             resolve(data);
         });
     });
@@ -320,7 +320,7 @@ export function hideAllComments() {
 export async function getCommentData(commentId) {
     return new Promise(function (resolve, reject) {
         $.get(
-            `http://${window.location.hostname}:5004/api/v1/comments/${commentId}`,
+            `https://${window.location.hostname}:5004/api/v1/comments/${commentId}`,
             function (commentData) {
                 resolve(commentData);
             }
@@ -389,13 +389,13 @@ export function createNewCommentForm(postId, cbutton) {
 
 // Send a new comment.
 export async function sendNewComment(postId, e, cbutton) {
-    let url = `http://${window.location.hostname}:5004/api/v1/artworks/${postId}/comments/`;
+    let url = `https://${window.location.hostname}:5004/api/v1/artworks/${postId}/comments/`;
     let data = {
         artist_id: ARTIST_ID,
         content: e.target.parentElement[0].value,
     };
     await $.post(url, JSON.stringify(data));
-    let postUrl = `http://${window.location.hostname}:5004/api/v1/artworks/${postId}`;
+    let postUrl = `https://${window.location.hostname}:5004/api/v1/artworks/${postId}`;
     await $.get(postUrl, function (post) {
         showComments(post, cbutton, true);
         updateCount(cbutton, post.comments.length);
@@ -412,7 +412,7 @@ export function updateCount(e, count) {
 export function deleteComment(e, cbutton) {
     const comment_body = e.target.parentElement;
     $.ajax({
-        url: `http://${window.location.hostname}:5004/api/v1/comments/${e.target.id}`,
+        url: `https://${window.location.hostname}:5004/api/v1/comments/${e.target.id}`,
         method: "DELETE",
         success: function () {
             comment_body.remove();
@@ -486,7 +486,7 @@ export function deletePost(post, e) {
         if (result.isConfirmed) {
             if (post.artist_id === ARTIST_ID) {
                 $.ajax({
-                    url: `http://${window.location.hostname}:5004/api/v1/artworks/${post.id}`,
+                    url: `https://${window.location.hostname}:5004/api/v1/artworks/${post.id}`,
                     method: "DELETE",
                     success: function () {
                         const targetArtwork = document.getElementById(post.id);

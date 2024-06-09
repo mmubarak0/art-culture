@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block feed %}
-<link rel="stylesheet" href="/static/styles/create-styles.css?{{cache_id}}">
+<link rel="stylesheet" href="/static/styles/create-styles.css">
 <div id="createContent">
     <form action="/create_artwork" method="POST" enctype="multipart/form-data">
         <label for="title">Title</label>
@@ -15,5 +15,5 @@
 <footer>
     <p>&copy; 2024 My Website</p>
 </footer>
-<script src="static/scripts/create.js?{{cache_id}}"></script>
+<script src="static/scripts/create.js"></script>
 {% endblock feed %}

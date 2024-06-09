@@ -3,7 +3,7 @@
 
 <head>
     <title>Art & Culture</title>
-    <link rel="stylesheet" type="text/css" href="/static/styles/styles.css?{{cache_id}}">
+    <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
             {% if session['artist_id'] %}
             <div id="navigation">
                 <a href="/feed">Feed <img src="/static/images/icons/home-add-svgrepo-com.svg" alt=""></a>
-                <a href="/messages">Messages <img src="/static/images/icons/messages-3-svgrepo-com.svg" alt=""></a>
+                <!--<a href="/messages">Messages <img src="/static/images/icons/messages-3-svgrepo-com.svg" alt=""></a>
                 <div class="dropdown">
                     <a href="#" class="dropbtn">Notifications <img src="/static/images/icons/notification-bell-svgrepo-com.svg"
                             alt=""></a>
@@ -24,7 +24,8 @@
                     </div>
                 </div>
                 <a href="#">search <img src="/static/images/icons/search-alt-2-svgrepo-com.svg" alt=""></a>
-            </div>
+		-->
+	    </div>
             <div class="dropdown-profile">
                 <img class="dropbtn-profile" src="{{session_artist.profile_picture}}" alt="Profile Picture">
                 <div class="dropdown-content-profile">

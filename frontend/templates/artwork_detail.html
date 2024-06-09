@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block artwork_detail %}
-<link rel="stylesheet" href="/static/styles/artwork-detail-styles.css?{{cache_id}}">
+<link rel="stylesheet" href="/static/styles/artwork-detail-styles.css">
 <main>
     <section id="main-content">
         <!-- Add more posts as needed -->
@@ -12,5 +12,5 @@
 <script>
     const ARTWORK_ID = "{{artwork.id}}";
 </script>
-<script type="module" src="/static/scripts/artwork_detail.js?{{cache_id}}"></script>
+<script type="module" src="/static/scripts/artwork_detail.js"></script>
 {% endblock artwork_detail %}
