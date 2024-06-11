@@ -1,10 +1,11 @@
 main {
-    display: flexbox;
+    display: flex;
     padding: 20px;
     box-sizing: border-box;
     flex-direction: column;
-    font-size: 1.3em;
-    font-family: 'Comic Sans MS', cursive;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700px;
 }
 /* main img {
     width: 250px;
@@ -13,151 +14,127 @@ main {
 #main-section {
     background: url('/static/images/cover-image.png') no-repeat;
     background-size: cover;
-    height: 1000px;
+    min-height: 90vh;
+    width: 100%;
     padding: 20px;
-    margin: 5px;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
     border-bottom: 2px solid #eee;
     border-radius: 50px 15px;
     align-items: center;
     position: relative;
 }
 #main-section h1 {
-    width: 50%;
-    margin: 0;
-    margin-left: 250px;
+    width: 80%;
     color: #005bf7;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 2.5em;
-    padding: 10px;
-    background-color: #ecf3ff;
+    padding: 20px;
+    margin-bottom: 10vh;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-#main-section h1:hover {
-    transform: rotate(5deg);
 }
 #main-section p {
     margin: 20px;
-    margin-left: 250px;
-    margin-right: 250px;
-    color: #010101;
+    margin-top: 10vh;
+    padding: 50px;
     background: rgba(255, 255, 255, 0.593);
-    font-size: 1.5em;
+    font-size: 3.5em;
     border-radius: 20px;
-    text-align: justify;
-    line-height: 1.5;
+    line-height: 1.6;
     transition: all 0.4s ease;
-    text-align: center;
-}
-#main-section p:hover {
-    margin-left: 0;
-    margin-right: 0;
+    text-align: justify;
+    font-weight: bold;
 }
 #main-section button {
     position: absolute;
-    margin: 20px;
-    margin-left: 250px;
-    margin-right: 250px;
-    padding: 10px;
+    padding: 20px;
+    width: 300px;
     background-color: #ecf3ff;
     color: #005bf7;
     border: none;
     border-radius: 5px;
-    font-size: 1.5em;
+    font-size: 2.5em;
     cursor: pointer;
-    bottom: 140px;
-    right: -50px;
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-#main-section button:hover {
-    transform: rotate(5deg);
+    right: 50px;
+    bottom: 5vh;
+    font-weight: bold;
+    box-shadow: -10px 5px 16px 4px #74797f;
 }
 
 #features {
     display: flex;
-    flex-wrap: wrap;
-    flex-grow: 2;
-    background: radial-gradient(circle, #ceddff, #8aafff, #4f87ff);
+    flex-direction: column;
+    width: 100%;
+    min-height: 90vh;
+    margin-bottom: 5vh;
     padding: 20px;
-    margin: 5px;
     border-bottom: 2px solid #ddd;
     border-radius: 15px 50px;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-#features:hover {
-    background-color: #f9f9f9;
-    transform: rotate(5deg);
-}
-
 #features h1 {
-    color: #01287e;
+    width: 400px;
+    color: #005bf7;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 10px;
-    background-color: #ecf3ff;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 20px;
+    margin-bottom: 200px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #features img {
-    width: 600px;
-    /* height: 600px; */
+    width: 80%;
+    width: 80%;
+    margin-top: 3vh;
     border-bottom: 2px solid #ddd;
     border-radius: 15px 50px;
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-
-#features:hover img {
-    transform: rotate(5deg);
 }
 
 #about {
     display: flex;
-    background: radial-gradient(circle, #ffcef0, #ff8af3, #ff4fdc);
+    min-height: 90vh;
+    width: 100%;
     padding: 20px;
     margin: 5px;
+    margin-bottom: 100px;
     border-bottom: 2px solid #ccc;
     border-radius: 50px 15px;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
     position: relative;
     overflow: hidden;
 }
 #about h2 {
+    width: 400px;
     margin: 20px;
-    margin-top: -200px;
-    color: #01287e;
+    color: #005bf7;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 2.5em;
-    padding: 10px;
-    background-color: #ecf3ff;
+    padding: 20px;
+    margin-bottom: 200px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-#about h2:hover {
-    transform: rotate(5deg);
 }
 #about img {
-    width: 500px;
+    margin-top: 3vh;
+    width: 80%;
+    height: 80%;
     /* height: 300px; */
     border-bottom: 2px solid #ccc;
     border-radius: 50px 15px;
-    margin: 10px;
     transform: rotate(-5deg);
     transition: transform 0.3s ease;
 }
@@ -213,75 +190,58 @@ main {
 
 #explore-and-learn {
     display: flex;
-    background: radial-gradient(circle, #cefbff, #8af5ff, #4ff0ff);
+    flex-direction: column;
+    align-items: center;
+    min-height: 90vh;
+    width: 100%;
+    margin-bottom: 100px;
     padding: 20px;
     border-bottom: 2px solid #bbb;
     border-radius: 15px 50px;
-    flex-direction: column;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(0.8);
-    }
-    50% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(0.8);
-    }
 }
 
 #explore-and-learn h2 {
-    margin: 20px;
-    color: #01287e;
+    width: 400px;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 2px;
     font-size: 2.5em;
-    padding: 10px;
-    background-color: #ecf3ff;
+    padding: 20px;
+    color: #005bf7;
+    margin-bottom: 200px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-
-#explore-and-learn h2:hover {
-    transform: rotate(5deg);
 }
 
 #explore-and-learn p {
     margin: 20px;
     color: #01287e;
-    font-size: 1.5em;
+    margin-top: 5vh;
+    font-size: 2.5em;
     text-align: justify;
     line-height: 1.5;
 }
 
 #explore-and-learn div {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
 #explore-and-learn img {
-    width: 350px;
-    height: 350px;
+    margin-top: 3vh;
     border-bottom: 2px solid #bbb;
     border-radius: 15px 50px;
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-
-#explore-and-learn img:hover {
-    transform: rotate(5deg);
 }
 
 #showcase-and-interact {
-    background: radial-gradient(circle, #ceffde, #8affc1, #4fffb0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
+    min-height: 90vh;
+    width: 100%;
+    margin-bottom: 100px;
     border-bottom: 2px solid #aaa;
     border-radius: 50px 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -326,27 +286,22 @@ main {
 }
 
 #showcase-and-interact h2 {
-    margin: 20px;
-    color: #01287e;
+    width: 400px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: #005bf7;
     font-size: 2.5em;
-    padding: 10px;
-    background-color: #ecf3ff;
+    padding: 20px;
+    margin-bottom: 200px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-
-#showcase-and-interact h2:hover {
-    transform: rotate(5deg);
 }
 
 #showcase-and-interact p {
     margin: 20px;
     color: #01287e;
+    margin-top: 5vh;
     font-size: 1.5em;
     text-align: justify;
     line-height: 1.5;
@@ -359,22 +314,18 @@ main {
 }
 
 #showcase-and-interact img {
-    width: 50%;
-    height: 50%;
-    margin: auto;
+    margin-top: 3vh;
+    width: 100%;
+    height: 100%;
     border-bottom: 2px solid #aaa;
     border-radius: 15px 50px;
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-
-#showcase-and-interact img:hover {
-    transform: rotate(5deg);
 }
 
 #find-your-next-adventure {
-    background: radial-gradient(circle, #f6ffce, #f5ff8a, #d6ff4f);
     padding: 20px;
+    min-height: 90vh;
+    width: 100%;
+    margin-bottom: 100px;
     border-bottom: 2px solid #999;
     border-radius: 15px 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -382,6 +333,7 @@ main {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #find-your-next-adventure::before {
@@ -421,63 +373,62 @@ main {
 }
 
 #find-your-next-adventure h2 {
-    margin: 20px;
-    color: #01287e;
+    color: #005bf7;
+    width: 400px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 2.5em;
-    padding: 10px;
-    background-color: #ecf3ff;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
 }
-
-#find-your-next-adventure h2:hover {
-    transform: rotate(5deg);
-}
-
 #find-your-next-adventure p {
     margin: 20px;
     color: #01287e;
-    font-size: 1.5em;
+    margin-top: 5vh;
+    font-size: 1.3em;
     text-align: justify;
     line-height: 1.5;
 }
 #features li {
-    font-size: 1.3em;
-    text-align: left;
-    line-height: 0.8;
+    font-size: 2.5em;
+    margin: 20px;
+    text-align: justify;
+    list-style: lower-roman;
 }
 
 #about p {
-    font-size: 1.3em;
+    font-size: 2.5em;
     text-align: justify;
+    margin-top: 5vh;
     line-height: 1.6;
 }
 
 #explore-and-learn p {
-    font-size: 1.3em;
+    font-size: 2.5em;
+    margin-top: 5vh;
     text-align: justify;
     line-height: 1.6;
 }
 
 #showcase-and-interact p {
-    font-size: 1.3em;
+    font-size: 2.5em;
+    margin-top: 5vh;
     text-align: justify;
     line-height: 1.6;
 }
 
 #find-your-next-adventure p {
-    font-size: 1.3em;
+    font-size: 2.5em;
+    margin-top: 5vh;
     text-align: justify;
     line-height: 1.6;
 }
 
 #rights-protection p {
-    font-size: 1.3em;
+    font-size: 2.5em;
+    margin-top: 5vh;
     text-align: justify;
     line-height: 1.6;
 }
@@ -488,21 +439,14 @@ main {
 }
 
 #find-your-next-adventure img {
-    width: 50%;
-    height: 50%;
-    margin: auto;
+    width: 100%;
+    height: 100%;
+    margin-top: 3vh;
     border-bottom: 2px solid #999;
     border-radius: 15px 50px;
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-
-#find-your-next-adventure img:hover {
-    transform: rotate(5deg);
 }
 
 #rights-protection {
-    background: radial-gradient(circle, #ffe7ce, #ffcc8a, #ffaa4f);
     padding: 20px;
     border-radius: 50px 15px;
     /* Add artistic touch */
@@ -520,7 +464,6 @@ main {
 
 .fancy-list {
     list-style-type: none;
-    padding: 0;
 }
 
 .fancy-list li {
