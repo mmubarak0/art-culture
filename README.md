@@ -15,21 +15,22 @@
   * [License](#License).
 
 ## Introduction
-Art & Culture is a social app that showcases African artists and our culture. It is a platform where artists can share their work and get feedback from other users. Users can also follow their favorite artists and get updates on their latest work. The app also has a feature that allows users to discover new artists and art forms. The app is built using Flask, a Python web framework, and MySQL, a relational database management system. The frontend is built using HTML, CSS, JavaScript, and jQuery. The deployed website is on [artandculture](https://artandculture.ki2kid.tech/). There is a dedicated Blog for the project at [Art & Culture Blog](https://hackernoon.com/preview/EkaK6YMgA1XSJUW8RqGx).
+Art & Culture is a social app that showcases African artists and our culture. It is a platform where artists can share their work and get feedback from other users. Users can also follow their favorite artists and get updates on their latest work. The app also has a feature that allows users to discover new artists and art forms. The app is built using Flask, a Python web framework, and MySQL, a relational database management system. The front end is built using HTML, CSS, JavaScript, and jQuery. The deployed website is on [artandculture](https://artandculture.ki2kid.tech/). The project has a dedicated Blog at [Art & Culture Blog](https://hackernoon.com/preview/EkaK6YMgA1XSJUW8RqGx).
 
 
 ## Installation
 To install the app, you need to have the following installed on your machine:
 - Python 3.8.5 or later.
 - MySQL 5.7 or later.
-- Flask
-- Flask-cors
-- Flasgger
-- sqlalchemy
+- python libraries (install through pip):  
+  - Flask
+  - Flask-cors
+  - Flasgger
+  - sqlalchemy
 
 To install the app, follow these steps:
 1. Clone the repository to your local machine.
-2. Run `setup_mysql_dev.sql` to create the database and tables.
+2. Run `cat setup_mysql_dev.sql | mysql -uroot -p` to create the database and tables.
 3. Run the following to command to start the development server:
 ```bash
 python3 -m api.v1.app # start the api server NOTE: This will start the api server on port 5004
