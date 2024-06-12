@@ -70,3 +70,6 @@ The app has the following features:
 Mohammed Mubarak / [Github](https://github.com/mmubarak0) / [Twitter](https://twitter.com/ki2kid)
 
 Mbali Ramakgasha / [Github]() / [Twitter]()
+
+# License
+This project is licensed under GNU-GPL v3.
